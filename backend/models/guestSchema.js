@@ -13,11 +13,11 @@ const guestSchema = mongoose.Schema(
             required:true,
         },
         baby:{
-            type:String,
+            type:Number,
             default:0
         },
         teenager:{
-            type:String,
+            type:Number,
             default:0
         },
         acceptedInvitation:{

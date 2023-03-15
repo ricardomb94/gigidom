@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import { Box, Button, FormControl, FormGroup, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Paper, Snackbar, TextField, Typography } from '@mui/material'
-import imageSrc from '../../assets/images/reservation.jpg'
-import decoImg from '../../assets/images/decoration.png'
-import { Visibility, VisibilityOff } from '@mui/icons-material';
-import theme from './theme'
+// import imageSrc from '../../assets/images/reservation.jpg'
+// import decoImg from '../../assets/images/decoration.png'
+// import { Visibility, VisibilityOff } from '@mui/icons-material';
+// import theme from './theme'
 import AgeSelect from './AgeSelect';
-import CheckConfirmation from './CheckConfirmation';
-import CheckCRefuse from '../form/CheckRefuse';
+import GuestStatus from './GuestStatus';
 import {IconFlagFR} from 'material-ui-flags';
 
 
@@ -14,13 +13,12 @@ import {IconFlagFR} from 'material-ui-flags';
 
 const Guest = () => {
 
-  // const classes = useStyles();
-  const [values, setValues] = React.useState({
-    // lastname:'',
-    // firstname:'',
-    // tel: '',
-    // password: '',
-  });
+  // const [values, setValues] = React.useState({
+  //   lastname:'',
+  //   firstname:'',
+  //   tel: '',
+  //   password: '',
+  // });
   const [firstname, setFirstname] = useState('')
   const [lastname, setLastname] = useState('')
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -29,16 +27,8 @@ const Guest = () => {
 
   // const handleChange = (prop) => (event) => {
   //   setValues({ ...values, [prop]: event.target.value });
-  // };
+  //  };
 
-
-  // const handleClickShowPassword = () => {
-  //   setValues({ ...values, showPassword: !values.showPassword });
-  // };
-
-  // const handleMouseDownPassword = (event) => {
-  //   event.preventDefault();
-  // };
   const handleSubmit = (event) => {
     event.preventDefault()
   }
@@ -91,20 +81,19 @@ const Guest = () => {
     <Grid>
     </Grid>
     <FormGroup
-      style ={{width: '80%', margin:'0 auto', paddingTop:'2rem' }}
+      style ={{width: '80%', margin:'2rem auto', paddingTop:'2rem' }}
       onSubmit={handleSubmit}
       >
     <Grid item  sx={{
       display:"flex"
     }}>
-      <CheckConfirmation marginBottom={5}/>    
-      <CheckCRefuse marginBottom={5}/> 
+      <GuestStatus/>
     </Grid>
     <TextField
         required
         style ={{marginBottom:'20px', marginTop:'10px'}}
         label='Nom'
-        placeholder='VotreNom'
+        placeholder='Votre Nom'
         value={lastname}
         InputProps={{ name: 'lastname' }}
         onChange={e => setLastname(e.target.value)}
@@ -121,7 +110,6 @@ const Guest = () => {
         variant="outlined"
        />
       <FormControl 
-        // className={classes.margin} 
         variant="outlined"
         >
           <InputLabel htmlFor="outlined-adornment-flag">Téléphone</InputLabel>
@@ -130,7 +118,7 @@ const Guest = () => {
             label="telephone"
             id="outlined-adornment-flag"
             name='tel'
-            inputProps={{name:'tel'}}   
+            inputProps={{name:tel}}   
             value={tel}
             onChange={e => setTel(e.target.value)}
             startAdornment={
@@ -153,16 +141,15 @@ const Guest = () => {
               marginTop:2,
               marginBottom:2
             }}
-            // className={classes.submit}
           >
-            Réserver
+            Envoyez
           </Button>
         </Grid>
       </FormGroup>
       <Snackbar
         open={snackbarOpen}
         message={snackbarMessage}
-        // onClose={onSnackbarClose} 
+         onClose={onSnackbarClose} 
         autoHideDuration={4000}
       />
   </Paper>
