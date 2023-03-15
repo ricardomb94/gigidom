@@ -1,7 +1,7 @@
-import { AppBar, Box, Button, Grid, IconButton, Tab, Tabs, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { React, useState } from 'react';
+import { React } from 'react';
 // import { Image } from 'mui-image';
 import { Slide } from "react-awesome-reveal";
 // import logo from '../assets/images/bague.png'
@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 //     }
 // }))
 
-const navItems = [{path:"/", label:"Notre histoire"}, {path:"/ceremony", label:"Cérémonie"}, {path:"/contact", label:"Contact"}]
+const navItems = [{path:"/", label:"Notre histoire"}, {path:"/ceremony", label:"Cérémonie"}, {path:"/contact", label:"Contact"}, {path:"/datatable", label:"Tableau"}]
 
 const Navbar = ({ links }) => {
     return (
@@ -34,12 +34,10 @@ const Navbar = ({ links }) => {
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: '#000000' }}
                     >
-                    
                     <IconButton edge="start" color="inherit" aria-label="menu" >
                     Gigi<FavoriteIcon sx={{color: '#f50057'}}/>Dom
                     </IconButton>
-                      
-                    </Typography>
+                    </Typography >
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                        {navItems.map((navItem) => (
                        <Button key={navItem.path} >

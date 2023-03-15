@@ -6,8 +6,8 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Ceremony from "./pages/Ceremony";
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import { Box } from '@mui/material';
 import Footer from './components/Footer';
+import DataTable  from "./pages/DataTable";
 
 const App = () => {
     return (
@@ -18,6 +18,7 @@ const App = () => {
                         <Route exact path="/" element={<About/>}/>
                         <Route path="/contact" element={<Contact/>}/>
                         <Route path="/ceremony" element={<Ceremony/>}/>
+                        <Route path="/datatable" element={<DataTable/>}/>
                     </Routes>
                 <Footer/>    
             </Router>

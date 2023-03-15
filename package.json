@@ -26,6 +26,7 @@
     "nodemon": "^2.0.21"
   },
   "devDependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "material-ui-flags": "^1.2.4"
   }
 }
