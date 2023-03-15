@@ -1,14 +1,19 @@
 import React from 'react'
 import { FormControl, FormHelperText, MenuItem, Select, InputLabel } from '@mui/material';
-import BabyChangingStationIcon from '@mui/icons-material/BabyChangingStation';
+// import BabyChangingStationIcon from '@mui/icons-material/BabyChangingStation';
 import ChildFriendlyIcon from '@mui/icons-material/ChildFriendly';
 import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
 
 const AgeSelect = () => {
-    const [age, setAge] = React.useState('');
+    const [value, setValue] = React.useState('');
+    const [qty, setQty] = React.useState('');
 
     const handleChange = (event) => {
-      setAge(event.target.value);
+      setValue(event.target.value);
+    };
+
+    const OnHandleChange = (event) => {
+      setQty(event.target.value);
     };
   
     return (
@@ -19,7 +24,7 @@ const AgeSelect = () => {
           <Select
             labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
-            value={age}
+            value={value}
             label="Age"
             onChange={handleChange}
           >
@@ -39,9 +44,9 @@ const AgeSelect = () => {
           <Select
             labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
-            value={age}
+            value={qty}
             label="Age"
-            onChange={handleChange}
+            onChange={OnHandleChange}
           >
             <MenuItem value="">
               <em>Ajouter</em>

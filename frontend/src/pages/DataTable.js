@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
+import { Grid, Typography } from '@mui/material';
 // import guests from '../data/guests.js'
 
 const columns = [
@@ -36,7 +37,10 @@ const rows = [
 
 export default function DataTable() {
   return (
-    <div style={{ margin:'auto', height: 400, width: '80%' }}>
+    <Grid style={{ margin:'5rem auto', height: 400, width:"75vw", textAlign:"center" }}>
+      <Typography variant="h5"  >
+        LISTE DES INVITES
+      </Typography>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -44,6 +48,6 @@ export default function DataTable() {
         rowsPerPageOptions={[5]}
         checkboxSelection
       />
-    </div>
+    </Grid>
   );
 }
