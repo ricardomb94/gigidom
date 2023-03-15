@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { Box, Button, Card, CardContent, CardMedia, createTheme, FormControl, FormGroup, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Paper, Snackbar, TextField, Typography } from '@mui/material'
+import { Box, Button, FormControl, FormGroup, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Paper, Snackbar, TextField, Typography } from '@mui/material'
 import imageSrc from '../../assets/images/reservation.jpg'
 import decoImg from '../../assets/images/decoration.png'
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import theme from './theme'
 import AgeSelect from './AgeSelect';
 import CheckConfirmation from './CheckConfirmation';
+import CheckCRefuse from '../form/CheckRefuse';
+import {IconFlagFR} from 'material-ui-flags';
 
 
 
@@ -21,22 +23,22 @@ const Guest = () => {
   });
   const [firstname, setFirstname] = useState('')
   const [lastname, setLastname] = useState('')
-  const [email, setEmail] = useState('')
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [tel, setTel] = useState('')
 
   // const handleChange = (prop) => (event) => {
   //   setValues({ ...values, [prop]: event.target.value });
   // };
 
 
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
+  // const handleClickShowPassword = () => {
+  //   setValues({ ...values, showPassword: !values.showPassword });
+  // };
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  // const handleMouseDownPassword = (event) => {
+  //   event.preventDefault();
+  // };
   const handleSubmit = (event) => {
     event.preventDefault()
   }
@@ -60,13 +62,15 @@ const Guest = () => {
   return (
    <Box 
     backgroundColor="blue"
-    height="90vh"
+    padding={2}
+    // height="90vh"
     sx={{
       display: 'flex',
       flexDirection: 'column',
       justifyContent:"center",
       alignItems: "center",
       background:"radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)",
+      height:"100%"
     }}
     >
       <Grid display="flex">
@@ -90,18 +94,24 @@ const Guest = () => {
       style ={{width: '80%', margin:'0 auto', paddingTop:'2rem' }}
       onSubmit={handleSubmit}
       >
-    <CheckConfirmation marginBottom={5}/>    
+    <Grid item  sx={{
+      display:"flex"
+    }}>
+      <CheckConfirmation marginBottom={5}/>    
+      <CheckCRefuse marginBottom={5}/> 
+    </Grid>
     <TextField
+        required
         style ={{marginBottom:'20px', marginTop:'10px'}}
         label='Nom'
-        placeholder='Votre nom'
+        placeholder='VotreNom'
         value={lastname}
         InputProps={{ name: 'lastname' }}
         onChange={e => setLastname(e.target.value)}
         variant="outlined"
-        required
        />
     <TextField
+        required
         style ={{marginBottom:'20px'}}
         label='Prénom'
         placeholder='Votre prénom'
@@ -110,21 +120,28 @@ const Guest = () => {
         onChange={e => setFirstname(e.target.value)}
         variant="outlined"
        />
-        {/* <br></br> */}
-     <TextField
-        style ={{marginBottom:'20px', marginTop:'2px'}}
-        label='E-mail'
-        placeholder='Votre e-mail'
-        value={email}
-        inputProps={{name:'email'}}
-        onChange={e => setEmail(e.target.value)}
-        variant="outlined"
-       />
-     <FormControl 
+      <FormControl 
         // className={classes.margin} 
         variant="outlined"
         >
-      </FormControl>
+          <InputLabel htmlFor="outlined-adornment-flag">Téléphone</InputLabel>
+          <OutlinedInput
+            required
+            label="telephone"
+            id="outlined-adornment-flag"
+            name='tel'
+            inputProps={{name:'tel'}}   
+            value={tel}
+            onChange={e => setTel(e.target.value)}
+            startAdornment={
+              <InputAdornment position="start">
+                  <IconButton>
+                    <IconFlagFR />
+                  </IconButton> +33
+              </InputAdornment>}
+            width={205}
+          />
+       </FormControl>     
       <AgeSelect/>
       <Grid item>
           <Button
@@ -145,7 +162,7 @@ const Guest = () => {
       <Snackbar
         open={snackbarOpen}
         message={snackbarMessage}
-        onClose={onSnackbarClose}
+        // onClose={onSnackbarClose} 
         autoHideDuration={4000}
       />
   </Paper>
