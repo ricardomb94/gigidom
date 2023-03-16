@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { Box, Button, FormControl, FormGroup, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Paper, Snackbar, TextField, Typography } from '@mui/material'
+import { Box, Button, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Grid, IconButton, InputAdornment, InputLabel, MenuItem, OutlinedInput, Paper, Radio, RadioGroup, Select, TextField, Typography } from '@mui/material'
+import ChildFriendlyIcon from '@mui/icons-material/ChildFriendly';
+import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
 // import imageSrc from '../../assets/images/reservation.jpg'
 // import decoImg from '../../assets/images/decoration.png'
 // import { Visibility, VisibilityOff } from '@mui/icons-material';
 // import theme from './theme'
-import AgeSelect from './AgeSelect';
-import GuestStatus from './GuestStatus';
+// import AgeSelect from './AgeSelect';
+// import GuestStatus from './GuestStatus';
 import {IconFlagFR} from 'material-ui-flags';
 
 
@@ -13,44 +15,30 @@ import {IconFlagFR} from 'material-ui-flags';
 
 const Guest = () => {
 
-  // const [values, setValues] = React.useState({
-  //   lastname:'',
-  //   firstname:'',
-  //   tel: '',
-  //   password: '',
-  // });
-  const [firstname, setFirstname] = useState('')
-  const [lastname, setLastname] = useState('')
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('');
-  const [tel, setTel] = useState('')
 
-  // const handleChange = (prop) => (event) => {
-  //   setValues({ ...values, [prop]: event.target.value });
-  //  };
+  const [inputs, setInputs] = useState({
+    firstname: " ",
+    lastname: " ",
+    tel:" ",
+    baby:" ",
+    teenager:" "
+  });
+
+const handleChange = (e) =>{
+  setInputs((prevState) => ({
+    ...prevState,
+     [e.target.name]: e.target.value
+  }))
+}
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    console.log(inputs)
   }
 
 
-  const onSnackbarClose = (e, reason) => {
-    if (reason === 'clickaway') {
-    return;
-    }
-
-    setSnackbarOpen(false);
-    setSnackbarMessage('');
-  };
-
-  const onCreate = () => {
-  setSnackbarOpen(true);
-  setSnackbarMessage(`Merci ${firstname} ${lastname}. Votre réservation est prise en compte `);
-
-  };
-
   return (
-   <Box 
+   <Box
     backgroundColor="blue"
     padding={2}
     // height="90vh"
@@ -64,8 +52,8 @@ const Guest = () => {
     }}
     >
       <Grid display="flex">
-        <Typography 
-        variant="h5" 
+        <Typography
+        variant="h5"
         textAlign="center"
         marginBottom={5}
         color="secondary"
@@ -80,36 +68,53 @@ const Guest = () => {
       }}>
     <Grid>
     </Grid>
-    <FormGroup
+    <form
+      onSubmit={handleSubmit} 
       style ={{width: '80%', margin:'2rem auto', paddingTop:'2rem' }}
-      onSubmit={handleSubmit}
       >
+        <FormGroup>
     <Grid item  sx={{
       display:"flex"
     }}>
-      <GuestStatus/>
+    <FormControl >
+      <FormLabel id="demo-controlled-radio-buttons-group">
+          <Typography style={{color:"grey", fontStyle:"italic"}}>
+              Serez-vous présent ?
+          </Typography>
+      </FormLabel>
+    <RadioGroup
+      row
+      aria-labelledby="demo-controlled-radio-buttons-group"
+      name="controlled-radio-buttons-group"
+      value={inputs.guestStatus}
+      onChange={handleChange}
+    >
+      <FormControlLabel value="Je serai présent" control={<Radio />} label="Oui je serai présent" />
+      <FormControlLabel value="Je serai absent" control={<Radio />} label="Non je serai absent" />
+    </RadioGroup>
+  </FormControl>
     </Grid>
     <TextField
         required
         style ={{marginBottom:'20px', marginTop:'10px'}}
-        label='Nom'
-        placeholder='Votre Nom'
-        value={lastname}
-        InputProps={{ name: 'lastname' }}
-        onChange={e => setLastname(e.target.value)}
+        label="Nom"
+        placeholder="Votre Nom"
+        value={inputs.lastname}
+        name="lastname"
+        onChange={handleChange}
         variant="outlined"
        />
     <TextField
         required
         style ={{marginBottom:'20px'}}
-        label='Prénom'
+        label="Prénom"
         placeholder='Votre prénom'
-        InputProps={{ name: 'firstname' }}
-        value={firstname}
-        onChange={e => setFirstname(e.target.value)}
+        name= "firstname"
+        value={inputs.firstname}
+        onChange={handleChange}
         variant="outlined"
        />
-      <FormControl 
+      <FormControl
         variant="outlined"
         >
           <InputLabel htmlFor="outlined-adornment-flag">Téléphone</InputLabel>
@@ -117,10 +122,10 @@ const Guest = () => {
             required
             label="telephone"
             id="outlined-adornment-flag"
-            name='tel'
-            inputProps={{name:tel}}   
-            value={tel}
-            onChange={e => setTel(e.target.value)}
+            name="tel"
+            // inputProps={{name:tel}}
+            value={inputs.tel}
+            onChange={handleChange}
             startAdornment={
               <InputAdornment position="start">
                   <IconButton>
@@ -129,11 +134,51 @@ const Guest = () => {
               </InputAdornment>}
             width={205}
           />
-       </FormControl>     
-      <AgeSelect/>
+       </FormControl>
+       <FormControl sx={{ m: 1, minWidth: 120 }}>
+          {/* <InputLabel id="demo-simple-select-helper-label"><BabyChangingStationIcon/></InputLabel> */}
+          <InputLabel id="demo-simple-select-helper-label"><ChildFriendlyIcon/></InputLabel>
+          <Select
+            labelId="demo-simple-select-helper-label"
+            id="demo-simple-select-helper"
+            name="baby"
+            value={inputs.baby}
+            label="Age"
+            onChange={handleChange}
+          >
+            <MenuItem value="">
+              <em>Ajouter</em>
+            </MenuItem>
+            <MenuItem value={1}>1</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
+          </Select>
+          <FormHelperText>Enfant - de 10 ans</FormHelperText>
+        </FormControl>
+        <FormControl sx={{ m: 1, minWidth: 120 }}>
+          {/* <InputLabel id="demo-simple-select-helper-label"><BabyChangingStationIcon/></InputLabel> */}
+          <InputLabel id="demo-simple-select-helper-label">< EscalatorWarningIcon/></InputLabel>
+          <Select
+            labelId="demo-simple-select-helper-label"
+            id="demo-simple-select-helper"
+            name="teenager"
+            value={inputs.teenager}
+            label="Age"
+            onChange={handleChange}
+          >
+            <MenuItem value="">
+              <em>Ajouter</em>
+            </MenuItem>
+            <MenuItem value={1}>1</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
+          </Select>
+          <FormHelperText>Adolescent</FormHelperText>
+        </FormControl>
       <Grid item>
           <Button
-            onClick={onCreate}
             type="submit"
             variant="contained"
             color="primary"
@@ -145,13 +190,8 @@ const Guest = () => {
             Envoyez
           </Button>
         </Grid>
-      </FormGroup>
-      <Snackbar
-        open={snackbarOpen}
-        message={snackbarMessage}
-         onClose={onSnackbarClose} 
-        autoHideDuration={4000}
-      />
+        </FormGroup>
+      </form>
   </Paper>
    </Box>
   )
