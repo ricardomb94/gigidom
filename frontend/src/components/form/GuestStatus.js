@@ -3,13 +3,18 @@ import React, { useState } from 'react'
 
 const GuestStatus = () => {
 
-    const [value, setValue] = useState();
+    const [value, setValue] = useState('');
     const handleChange = (e) => {
-        setValue(e.target.value)
+      setValue(e.target.value);  
+
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        
     }
 
   return (
-    <FormControl>
+    <FormControl onSubmit={handleSubmit}>
     <FormLabel id="demo-controlled-radio-buttons-group">
         <Typography>
             Serez-vous présent ?
