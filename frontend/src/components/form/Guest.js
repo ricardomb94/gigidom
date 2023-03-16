@@ -1,14 +1,8 @@
 import React, { useState } from 'react'
-import { Box, Button, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Grid, IconButton, InputAdornment, InputLabel, MenuItem, OutlinedInput, Paper, Radio, RadioGroup, Select, TextField, Typography } from '@mui/material'
-import ChildFriendlyIcon from '@mui/icons-material/ChildFriendly';
-import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
-// import imageSrc from '../../assets/images/reservation.jpg'
-// import decoImg from '../../assets/images/decoration.png'
+import { Box, Button, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Paper, Radio, RadioGroup, TextField, Typography } from '@mui/material'
 // import { Visibility, VisibilityOff } from '@mui/icons-material';
-// import theme from './theme'
-// import AgeSelect from './AgeSelect';
-// import GuestStatus from './GuestStatus';
 import {IconFlagFR} from 'material-ui-flags';
+import AgeSelect from './AgeSelect';
 
 
 
@@ -135,15 +129,14 @@ const handleChange = (e) =>{
             width={205}
           />
        </FormControl>
-       <FormControl sx={{ m: 1, minWidth: 120 }}>
-          {/* <InputLabel id="demo-simple-select-helper-label"><BabyChangingStationIcon/></InputLabel> */}
+       {/* <FormControl sx={{ m: 1, minWidth: 120 }}>
           <InputLabel id="demo-simple-select-helper-label"><ChildFriendlyIcon/></InputLabel>
           <Select
             labelId="demo-simple-select-helper-label"
-            id="demo-simple-select-helper"
+            id="1"
             name="baby"
-            value={inputs.baby}
-            label="Age"
+            value={inputs.baby }
+            label="-10ans"
             onChange={handleChange}
           >
             <MenuItem value="">
@@ -157,14 +150,13 @@ const handleChange = (e) =>{
           <FormHelperText>Enfant - de 10 ans</FormHelperText>
         </FormControl>
         <FormControl sx={{ m: 1, minWidth: 120 }}>
-          {/* <InputLabel id="demo-simple-select-helper-label"><BabyChangingStationIcon/></InputLabel> */}
-          <InputLabel id="demo-simple-select-helper-label">< EscalatorWarningIcon/></InputLabel>
+          <InputLabel id="2">< EscalatorWarningIcon/></InputLabel>
           <Select
             labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
             name="teenager"
             value={inputs.teenager}
-            label="Age"
+            label="Adolescent"
             onChange={handleChange}
           >
             <MenuItem value="">
@@ -176,7 +168,13 @@ const handleChange = (e) =>{
             <MenuItem value={4}>4</MenuItem>
           </Select>
           <FormHelperText>Adolescent</FormHelperText>
-        </FormControl>
+        </FormControl> */}
+        <AgeSelect 
+          inputs={inputs}
+          setInputs={setInputs}
+          baby={inputs.baby}
+          teenager={inputs.teenager}
+          />
       <Grid item>
           <Button
             type="submit"

@@ -1,32 +1,18 @@
 import React from 'react'
 import { FormControl, FormHelperText, MenuItem, Select, InputLabel } from '@mui/material';
-// import BabyChangingStationIcon from '@mui/icons-material/BabyChangingStation';
 import ChildFriendlyIcon from '@mui/icons-material/ChildFriendly';
 import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
 
-const AgeSelect = () => {
-    const [value, setValue] = React.useState('');
-    const [qty, setQty] = React.useState('');
-
-    const handleChange = (event) => {
-      setValue(event.target.value);
-    };
-
-    const OnHandleChange = (event) => {
-      setQty(event.target.value);
-    };
-  
+const AgeSelect = (props) => {
     return (
       <div>
-        <FormControl sx={{ m: 1, minWidth: 120 }}>
-          {/* <InputLabel id="demo-simple-select-helper-label"><BabyChangingStationIcon/></InputLabel> */}
-          <InputLabel id="demo-simple-select-helper-label"><ChildFriendlyIcon/></InputLabel>
+        <FormControl sx={{ m: 1, minWidth: 50 }}>
+          <InputLabel ><ChildFriendlyIcon/></InputLabel>
           <Select
-            labelId="demo-simple-select-helper-label"
-            id="demo-simple-select-helper"
-            value={value}
-            label="Age"
-            onChange={handleChange}
+            name="baby"
+            value={props.inputs.baby}
+            label="baby"
+            onChange={(e) => props.setInputs({ ...props.inputs, [e.target.name]: e.target.value })}
           >
             <MenuItem value="">
               <em>Ajouter</em>
@@ -39,14 +25,12 @@ const AgeSelect = () => {
           <FormHelperText>Enfant - de 10 ans</FormHelperText>
         </FormControl>
         <FormControl sx={{ m: 1, minWidth: 120 }}>
-          {/* <InputLabel id="demo-simple-select-helper-label"><BabyChangingStationIcon/></InputLabel> */}
           <InputLabel id="demo-simple-select-helper-label">< EscalatorWarningIcon/></InputLabel>
           <Select
-            labelId="demo-simple-select-helper-label"
-            id="demo-simple-select-helper"
-            value={qty}
+            name='teenager'
+            value={props.inputs.teenager}
             label="Age"
-            onChange={OnHandleChange}
+            onChange={(e) => props.setInputs({ ...props.inputs, [e.target.name]: e.target.value })}
           >
             <MenuItem value="">
               <em>Ajouter</em>
