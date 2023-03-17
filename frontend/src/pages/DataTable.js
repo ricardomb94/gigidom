@@ -1,7 +1,9 @@
-import * as React from 'react';
+import {React, useState, useEffect} from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Grid, Typography } from '@mui/material';
-// import guests from '../data/guests.js'
+import axios from 'axios';
+
+
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
@@ -17,15 +19,6 @@ const columns = [
   { field: 'teenager', headerName: 'adolescent', width: 130 },
   { field: 'acceptedInvitation', headerName: 'confirmé', width: 130 },
   { field: 'refusedInvitation', headerName: 'refusé', width: 130 },
-  // {
-  //   field: 'fullName',
-  //   headerName: 'Full name',
-  //   description: 'This column has a value getter and is not sortable.',
-  //   sortable: false,
-  //   width: 160,
-  //   valueGetter: (params) =>
-  //     `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-  // },
 ];
 
 const rows = [
@@ -36,10 +29,22 @@ const rows = [
 ];
 
 export default function DataTable() {
+
+  const [guests, setGuest] = useState([]);
+
+  useEffect(() => {
+    const fetchGuests = async ()=> {
+      const {data} = await axios.get('/api/guests')
+
+      setGuest(data)
+    }
+    console.log(fetchGuests())
+  }, [])
+
   return (
-    <Grid style={{ margin:'5rem auto', height: 400, width:"75vw", textAlign:"center" }}>
+    <Grid style={{ margin:'3rem auto', height: 400, width:"75vw", textAlign:"center" }}>
       <Typography variant="h5"  >
-        LISTE DES INVITES
+        Liste des invités
       </Typography>
       <DataGrid
         rows={rows}

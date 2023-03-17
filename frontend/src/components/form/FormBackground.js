@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@mui/material'
 import Form from './Form'
-import backgroundImage from '../../assets/images/background-img.jpg'
+// import backgroundImage from '../../assets/images/background-img.jpg'
 
 const FormBackground = () => {
   return (

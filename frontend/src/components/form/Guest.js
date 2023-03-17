@@ -5,10 +5,7 @@ import {IconFlagFR} from 'material-ui-flags';
 import AgeSelect from './AgeSelect';
 
 
-
-
 const Guest = () => {
-
 
   const [inputs, setInputs] = useState({
     firstname: " ",
@@ -66,20 +63,19 @@ const handleChange = (e) =>{
       onSubmit={handleSubmit} 
       style ={{width: '80%', margin:'2rem auto', paddingTop:'2rem' }}
       >
-        <FormGroup>
+    <FormGroup>
     <Grid item  sx={{
       display:"flex"
     }}>
     <FormControl >
-      <FormLabel id="demo-controlled-radio-buttons-group">
+      <FormLabel >
           <Typography style={{color:"grey", fontStyle:"italic"}}>
               Serez-vous présent ?
           </Typography>
       </FormLabel>
     <RadioGroup
       row
-      aria-labelledby="demo-controlled-radio-buttons-group"
-      name="controlled-radio-buttons-group"
+      name="status"
       value={inputs.guestStatus}
       onChange={handleChange}
     >
@@ -129,46 +125,6 @@ const handleChange = (e) =>{
             width={205}
           />
        </FormControl>
-       {/* <FormControl sx={{ m: 1, minWidth: 120 }}>
-          <InputLabel id="demo-simple-select-helper-label"><ChildFriendlyIcon/></InputLabel>
-          <Select
-            labelId="demo-simple-select-helper-label"
-            id="1"
-            name="baby"
-            value={inputs.baby }
-            label="-10ans"
-            onChange={handleChange}
-          >
-            <MenuItem value="">
-              <em>Ajouter</em>
-            </MenuItem>
-            <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={2}>2</MenuItem>
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
-          </Select>
-          <FormHelperText>Enfant - de 10 ans</FormHelperText>
-        </FormControl>
-        <FormControl sx={{ m: 1, minWidth: 120 }}>
-          <InputLabel id="2">< EscalatorWarningIcon/></InputLabel>
-          <Select
-            labelId="demo-simple-select-helper-label"
-            id="demo-simple-select-helper"
-            name="teenager"
-            value={inputs.teenager}
-            label="Adolescent"
-            onChange={handleChange}
-          >
-            <MenuItem value="">
-              <em>Ajouter</em>
-            </MenuItem>
-            <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={2}>2</MenuItem>
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
-          </Select>
-          <FormHelperText>Adolescent</FormHelperText>
-        </FormControl> */}
         <AgeSelect 
           inputs={inputs}
           setInputs={setInputs}

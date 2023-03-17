@@ -5,7 +5,8 @@ import colors from 'colors';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import path from 'path';
-import guests from './data/guests.js' 
+import guestRoutes from './routes/guest.js';
+
 
 dotenv.config();
 
@@ -13,22 +14,16 @@ connectDB();
 
 const app = express();
 
+// const Router = express();
+
 // Middleware
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 };
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-
-// app.use(
-//     createProxyMiddleware("/", {
-//       target: "http://127.0.0.1:3000/",
-//     })
-//   );
-
-
-
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '/frontend/build')))
@@ -40,18 +35,9 @@ if (process.env.NODE_ENV === 'production') {
     app.get('/', (req, res) => {
       res.send('API is running....')
     })
-  }
+  };
 
-
-app.get('/api/guests', (req, res) => {
-res.json(guests)
-})
-
-app.get('/api/guest/:id', (req, res) => {
-  const guest = guests.find(g => g._id === req.params.id)
-  res.json(guest)
-})
-
+  app.use('/api', guestRoutes);
 
 //Start the server
 const PORT = process.env.PORT || 5000

@@ -3,13 +3,12 @@ import mongoose from 'mongoose'
 
 const guestSchema = mongoose.Schema(
     {
-        name:{
-            firstname: String,
-            lastname: String,
+        firstname:{
+            type:String,
             required:true
         },
-        mobile:{
-            type:Number,
+        tel:{
+            type:String,
             required:true,
         },
         baby:{
@@ -20,14 +19,14 @@ const guestSchema = mongoose.Schema(
             type:Number,
             default:0
         },
-        acceptedInvitation:{
-            type:boolean,
-            default:true
+        status:{
+            type:String,
+            enum:["Je serai présent", "Je serai absent"]
         },
-        refusedInvitation:{
-            type:boolean,
-            default:true
-        },
+        // select:{
+        //     type:String,
+        //     enum:["baby", "teenager"]
+        // },
         created: {
             type: Date,
             default: Date.now
@@ -37,6 +36,6 @@ const guestSchema = mongoose.Schema(
 )
 
 
-const Guests = mongoose.model('Guests', guestSchema)
+const Guest = mongoose.model('Guest', guestSchema)
 
-export default Guests
+export default Guest

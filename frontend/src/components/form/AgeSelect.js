@@ -27,9 +27,9 @@ const AgeSelect = (props) => {
         <FormControl sx={{ m: 1, minWidth: 120 }}>
           <InputLabel id="demo-simple-select-helper-label">< EscalatorWarningIcon/></InputLabel>
           <Select
-            name='teenager'
+            name="teenager"
             value={props.inputs.teenager}
-            label="Age"
+            label="teenage"
             onChange={(e) => props.setInputs({ ...props.inputs, [e.target.name]: e.target.value })}
           >
             <MenuItem value="">

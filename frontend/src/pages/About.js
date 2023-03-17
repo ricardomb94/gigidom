@@ -6,11 +6,6 @@ import Guest from '../components/form/Guest';
 // import Lottie from "lottie-react";
 // import groovyWalkAnimation from "../components/groovyWalk.json";
 
-
-const style = {
-  height: 150,
-};
-
 const About = () => {
   return (
     <Box >
