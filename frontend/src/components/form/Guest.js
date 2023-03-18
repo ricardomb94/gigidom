@@ -1,19 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Box, Button, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Paper, Radio, RadioGroup, TextField, Typography } from '@mui/material'
 // import { Visibility, VisibilityOff } from '@mui/icons-material';
 import {IconFlagFR} from 'material-ui-flags';
 import AgeSelect from './AgeSelect';
+import axios from 'axios';
 
 
 const Guest = () => {
 
   const [inputs, setInputs] = useState({
+    statut: "",
     firstname: " ",
     lastname: " ",
     tel:" ",
     baby:" ",
     teenager:" "
   });
+
+  useEffect(() => {
+    const fetchGuest = async () => {
+      const {data} = await axios.post('/guest')
+      setInputs(data)
+    };
+
+    fetchGuest()
+  }, []);
 
 const handleChange = (e) =>{
   setInputs((prevState) => ({
@@ -75,7 +86,7 @@ const handleChange = (e) =>{
       </FormLabel>
     <RadioGroup
       row
-      name="status"
+      name="statut"
       value={inputs.guestStatus}
       onChange={handleChange}
     >

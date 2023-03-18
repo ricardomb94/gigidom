@@ -6,7 +6,7 @@ import Guest from '../components/form/Guest';
 // import Lottie from "lottie-react";
 // import groovyWalkAnimation from "../components/groovyWalk.json";
 
-const About = () => {
+const Accueil = () => {
   return (
     <Box >
         <CustomCard/>
@@ -16,4 +16,4 @@ const About = () => {
   )
 }
 
-export default About
+export default Accueil

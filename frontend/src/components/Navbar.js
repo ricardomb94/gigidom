@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 //     }
 // }))
 
-const navItems = [{path:"/", label:"Notre histoire"}, {path:"/ceremony", label:"Cérémonie"}, {path:"/contact", label:"Contact"}, {path:"/datatable", label:"Tableau"}]
+const navItems = [{path:"/", label:"Invitation"}, {path:"/ceremony", label:"Cérémonie"}, {path:"/contact", label:"Contact"}, {path:"/datatable", label:"Tableau"}]
 
 const Navbar = ({ links }) => {
     return (
