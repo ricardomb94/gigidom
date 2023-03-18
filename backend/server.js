@@ -5,6 +5,7 @@ import colors from 'colors';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import path from 'path';
+// import route
 import guestRoutes from './routes/guest.js';
 
 

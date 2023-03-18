@@ -1,16 +1,18 @@
 import {check} from 'express-validator'
 
-exports.guestValidator = [
+const guestValidator = [
     check('firstname')
     .not()
     .isEmpty()
-    .withMessage('Ce champ est obligatoire'),
+    .withMessage('le prénom est obligatoire'),
     check('lastname')
     .not()
-    .isEmail()
-    .withMessage('Ce champ est obligatoire'),
+    .isEmpty()
+    .withMessage('Le nom est obligatoire'),
     check('tel')
     .not()
-    .isLength({maxLength:10})
+    .isLength({max:10})
     .withMessage('Votre numéro doit contenir 10 chiffres'),
 ]
+
+export {guestValidator}

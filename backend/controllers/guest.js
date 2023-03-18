@@ -1,20 +1,29 @@
-// import guest from '../routes/guest.js';
+import Guest from '../models/guest.js'
+import asyncHandler from "express-async-handler";
 
 
-const guest  = (req, res) =>{
-    res.json({
-        data:"It's working ! "
-    })
+const guest = asyncHandler(async (req, res) => {
+  const { statut, firstname, lastname, tel, baby, teenager } = req.body;
 
-}
+  // Check if the guest already exists
+  const existingGuest = await Guest.findOne({ tel });
+  if (existingGuest) {
+    return res.status(400).json({
+      error: "Ce numéro de téléphone est déjà pris"
+    });
+  }
+
+  // Create a new guest object and save it to the database
+  const newUser = new Guest({ statut, firstname, lastname, tel, baby, teenager });
+  await newUser.save();
+
+  // Send a success response
+  res.json({
+    message: "Merci d'avoir rempli le formulaire"
+  });
+});
 
 export {guest}
-
-
-
-
-
-
 
 
 
