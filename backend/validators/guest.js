@@ -10,8 +10,7 @@ const guestValidator = [
     .isEmpty()
     .withMessage('Le nom est obligatoire'),
     check('tel')
-    .not()
-    .isLength({max:10})
+    .matches(/[0-9]{10}/)
     .withMessage('Votre numéro doit contenir 10 chiffres'),
 ]
 
