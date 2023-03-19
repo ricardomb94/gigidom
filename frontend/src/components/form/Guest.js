@@ -4,6 +4,8 @@ import { Box, Button, FormControl, FormControlLabel, FormGroup, FormLabel, Grid,
 import {IconFlagFR} from 'material-ui-flags';
 import AgeSelect from './AgeSelect';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.min.css';
 
 
 const Guest = () => {
@@ -17,14 +19,45 @@ const Guest = () => {
     teenager:" "
   });
 
-  useEffect(() => {
-    const fetchGuest = async () => {
-      const {data} = await axios.post('/guest')
-      setInputs(data)
-    };
+  // useEffect(() => {
+  //   const fetchGuest = async (e) => {
+  //     e.preventDefault()
+  //     console.log("---e---", e)
+  //    const resp = await axios.post('http://localhost:8055/api/guest', {
+  //       statut: e.target[0].value,
+  //       firstname: e.target[1].value,
+  //       lastname: e.target[2].value,
+  //       tel: e.target[3].value,
+  //       baby: e.target[4].value,
+  //       teenager: e.target[5].value,
+  //     })
+      
+  //     console.log(resp)
+  //   }
 
-    fetchGuest()
-  }, []);
+  //   fetchGuest()
+  // });
+
+
+  // useEffect(() => {
+  //   const fetchGuest = async () =>{
+  //     await axios.post('http://localhost:8055/api/guest', {
+  //       statut: "présent",
+  //       firstname: "firstname",
+  //       lastname: "lastname",
+  //       tel: "0132894975",
+  //       baby: "baby",
+  //       teenager: "teenager"
+  //     })
+  //     .then(response => {
+  //       console.log('Données envoyées avec succès', response)
+  //     })
+  //   }
+  //   fetchGuest()
+
+  // })
+   
+  
 
 const handleChange = (e) =>{
   setInputs((prevState) => ({
@@ -33,11 +66,35 @@ const handleChange = (e) =>{
   }))
 }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    console.log(inputs)
-  }
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    console.log("---INPUTS---", inputs)
+    setInputs({...inputs})
+    axios({
+      method: 'POST',
+      url:'http://localhost:8055/api/guest',
+      data:{
+        statut: "absent",
+        firstname: "Richard",
+        lastname: "MBK-MNK",
+        tel:"0646461554", 
+        baby:"1", 
+        teenager:"3"
+      }
+    })
+    
+    // const resp = await axios.post('http://localhost:8055/api/guest', {
+    //   statut: e.target[0].value,
+    //   firstname: e.target[1].value,
+    //   lastname: e.target[2].value,
+    //   tel: e.target[3].value,
+    //   baby: e.target[4].value,
+    //   teenager: e.target[5].value,
+    // });
+    // console.log("-----RESP----", resp)
+  };
 
+  const notify = () => toast("Invitation confirmée, merci!")
 
   return (
    <Box
@@ -60,6 +117,7 @@ const handleChange = (e) =>{
         marginBottom={5}
         color="secondary"
         >
+          <ToastContainer/>
           Cher/es invité/es<br/> Veuillez confirmer votre présence avant le 26 juin
       </Typography>
       </Grid>
@@ -90,8 +148,8 @@ const handleChange = (e) =>{
       value={inputs.guestStatus}
       onChange={handleChange}
     >
-      <FormControlLabel value="Je serai présent" control={<Radio />} label="Oui je serai présent" />
-      <FormControlLabel value="Je serai absent" control={<Radio />} label="Non je serai absent" />
+      <FormControlLabel value="présent" control={<Radio />} label="présent" />
+      <FormControlLabel value="absent" control={<Radio />} label="absent" />
     </RadioGroup>
   </FormControl>
     </Grid>
@@ -124,14 +182,13 @@ const handleChange = (e) =>{
             label="telephone"
             id="outlined-adornment-flag"
             name="tel"
-            // inputProps={{name:tel}}
             value={inputs.tel}
             onChange={handleChange}
             startAdornment={
               <InputAdornment position="start">
                   <IconButton>
                     <IconFlagFR />
-                  </IconButton> +33
+                  </IconButton> 
               </InputAdornment>}
             width={205}
           />
@@ -144,6 +201,7 @@ const handleChange = (e) =>{
           />
       <Grid item>
           <Button
+            onClick={notify}
             type="submit"
             variant="contained"
             color="primary"

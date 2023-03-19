@@ -1,19 +1,13 @@
+import { Box } from '@mui/material'
 import React from 'react'
-import { Box} from '@mui/material'
-import CustomCard from '../components/CustomCard'
-import Guest from '../components/form/Guest';
+import Guest from '../components/form/Guest'
 
-// import Lottie from "lottie-react";
-// import groovyWalkAnimation from "../components/groovyWalk.json";
-
-const Accueil = () => {
+const Invitation = () => {
   return (
-    <Box >
-        <CustomCard/>
-        {/* <Lottie animationData={groovyWalkAnimation} style={style}/> */}
+    <Box>
         <Guest/>
     </Box>
   )
 }
 
-export default Accueil
+export default Invitation
