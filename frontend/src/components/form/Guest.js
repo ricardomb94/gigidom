@@ -11,12 +11,12 @@ import 'react-toastify/dist/ReactToastify.min.css';
 const Guest = () => {
 
   const [inputs, setInputs] = useState({
-    statut: "",
-    firstname: " ",
-    lastname: " ",
-    tel:" ",
-    baby:" ",
-    teenager:" "
+    statut: '',
+    firstname: '',
+    lastname: '',
+    tel:'',
+    baby:'',
+    teenager:''
   });
 
   // useEffect(() => {
@@ -68,20 +68,33 @@ const handleChange = (e) =>{
 
   const handleSubmit = async(e) => {
     e.preventDefault()
+    console.log('***E-PREV*** :', e.target)
     console.log("---INPUTS---", inputs)
-    setInputs({...inputs})
-    axios({
+    // setInputs({...inputs})
+   
+    const requestOptions = {
       method: 'POST',
-      url:'http://localhost:8055/api/guest',
-      data:{
-        statut: "absent",
-        firstname: "Richard",
-        lastname: "MBK-MNK",
-        tel:"0646461554", 
-        baby:"1", 
-        teenager:"3"
-      }
-    })
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify(inputs)
+    }
+    const response = await fetch('/api/guest', requestOptions)
+    const data = await response.json();
+    setInputs({...inputs})
+    
+  };
+
+
+    // axios({
+    //   method: 'post',
+    //   url: 'http://localhost:8055/api/guest',
+    //   data: data
+    // }).then((response) => {
+    //   console.log('RESPONSE', response);
+    // })
+    // .catch((err) => {
+    //   throw err
+    // })
+  
     
     // const resp = await axios.post('http://localhost:8055/api/guest', {
     //   statut: e.target[0].value,
@@ -92,7 +105,7 @@ const handleChange = (e) =>{
     //   teenager: e.target[5].value,
     // });
     // console.log("-----RESP----", resp)
-  };
+  // };
 
   const notify = () => toast("Invitation confirmée, merci!")
 

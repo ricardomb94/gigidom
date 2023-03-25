@@ -3,6 +3,11 @@ import mongoose from 'mongoose'
 
 const guestSchema = mongoose.Schema(
     {
+        statut:{
+            type:String,
+            enum:["présent", "absent"],
+            required:true
+        },
         firstname:{
             type:String,
             trim: true,
@@ -20,17 +25,10 @@ const guestSchema = mongoose.Schema(
             unique:true
         },
         baby:{
-            type:Number,
-            default:0
+            type:String,
         },
         teenager:{
-            type:Number,
-            default:0
-        },
-        statut:{
             type:String,
-            enum:["présent", "absent"],
-            required:true
         },
         // select:{
         //     type:String,
@@ -38,7 +36,7 @@ const guestSchema = mongoose.Schema(
         // },
         created: {
             type: Date,
-            default: Date.now
+            default: Date.now()
         },
         
     }

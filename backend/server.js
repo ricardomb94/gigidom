@@ -20,11 +20,11 @@ const app = express();
 // Middleware
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
+    app.use(cors({ origin: `http://localhost:3000` }));
 };
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '/frontend/build')))
