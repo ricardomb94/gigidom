@@ -14,8 +14,8 @@ const guest = asyncHandler(async (req, res) => {
   }
 
   // Create a new guest object and save it to the database
-  const newUser = new Guest({ statut, firstname, lastname, tel, baby, teenager });
-  await newUser.save();
+  const newGuest = new Guest({ statut, firstname, lastname, tel, baby, teenager });
+  await newGuest.save();
 
   // Send a success response
   res.json({

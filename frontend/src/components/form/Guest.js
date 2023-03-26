@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import { Box, Button, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Paper, Radio, RadioGroup, TextField, Typography } from '@mui/material'
 // import { Visibility, VisibilityOff } from '@mui/icons-material';
 import {IconFlagFR} from 'material-ui-flags';
 import AgeSelect from './AgeSelect';
-import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.min.css';
 
@@ -19,46 +18,7 @@ const Guest = () => {
     teenager:''
   });
 
-  // useEffect(() => {
-  //   const fetchGuest = async (e) => {
-  //     e.preventDefault()
-  //     console.log("---e---", e)
-  //    const resp = await axios.post('http://localhost:8055/api/guest', {
-  //       statut: e.target[0].value,
-  //       firstname: e.target[1].value,
-  //       lastname: e.target[2].value,
-  //       tel: e.target[3].value,
-  //       baby: e.target[4].value,
-  //       teenager: e.target[5].value,
-  //     })
-      
-  //     console.log(resp)
-  //   }
-
-  //   fetchGuest()
-  // });
-
-
-  // useEffect(() => {
-  //   const fetchGuest = async () =>{
-  //     await axios.post('http://localhost:8055/api/guest', {
-  //       statut: "présent",
-  //       firstname: "firstname",
-  //       lastname: "lastname",
-  //       tel: "0132894975",
-  //       baby: "baby",
-  //       teenager: "teenager"
-  //     })
-  //     .then(response => {
-  //       console.log('Données envoyées avec succès', response)
-  //     })
-  //   }
-  //   fetchGuest()
-
-  // })
-   
-  
-
+ 
 const handleChange = (e) =>{
   setInputs((prevState) => ({
     ...prevState,
@@ -68,9 +28,8 @@ const handleChange = (e) =>{
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    console.log('***E-PREV*** :', e.target)
+  
     console.log("---INPUTS---", inputs)
-    // setInputs({...inputs})
    
     const requestOptions = {
       method: 'POST',
@@ -79,35 +38,15 @@ const handleChange = (e) =>{
     }
     const response = await fetch('/api/guest', requestOptions)
     const data = await response.json();
-    setInputs({...inputs})
-    
+    console.log('DATA :', data)
+    setInputs({...inputs, statut: '', firstname: '', lastname: '', tel: '', baby: '', teenager: ''});
+    if(!response.ok){
+        toast.error(data.error)
+      }
+    toast.success(data.message)
   };
 
-
-    // axios({
-    //   method: 'post',
-    //   url: 'http://localhost:8055/api/guest',
-    //   data: data
-    // }).then((response) => {
-    //   console.log('RESPONSE', response);
-    // })
-    // .catch((err) => {
-    //   throw err
-    // })
-  
-    
-    // const resp = await axios.post('http://localhost:8055/api/guest', {
-    //   statut: e.target[0].value,
-    //   firstname: e.target[1].value,
-    //   lastname: e.target[2].value,
-    //   tel: e.target[3].value,
-    //   baby: e.target[4].value,
-    //   teenager: e.target[5].value,
-    // });
-    // console.log("-----RESP----", resp)
-  // };
-
-  const notify = () => toast("Invitation confirmée, merci!")
+  // const notify = () => toast("Invitation confirmée, merci!")
 
   return (
    <Box
@@ -214,7 +153,7 @@ const handleChange = (e) =>{
           />
       <Grid item>
           <Button
-            onClick={notify}
+            // onClick={notify}
             type="submit"
             variant="contained"
             color="primary"
