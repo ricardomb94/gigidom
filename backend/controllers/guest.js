@@ -3,7 +3,7 @@ import asyncHandler from "express-async-handler";
 
 
 const guest = asyncHandler(async (req, res) => {
-  const { statut, firstname, lastname, tel, baby, teenager } = req.body;
+  const { statut, firstname, lastname, tel, email, baby, teenager } = req.body;
 
   // Check if the guest already exists
   const existingGuest = await Guest.findOne({ tel });
@@ -14,7 +14,7 @@ const guest = asyncHandler(async (req, res) => {
   }
 
   // Create a new guest object and save it to the database
-  const newGuest = new Guest({ statut, firstname, lastname, tel, baby, teenager });
+  const newGuest = new Guest({ statut, firstname, lastname, tel, email, baby, teenager });
   await newGuest.save();
 
   // Send a success response

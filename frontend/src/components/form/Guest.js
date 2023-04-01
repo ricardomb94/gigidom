@@ -5,6 +5,11 @@ import {IconFlagFR} from 'material-ui-flags';
 import AgeSelect from './AgeSelect';
 import { ToastContainer, toast } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.min.css';
+// import sgMail from '@sendgrid/mail';
+// import 'babel-polyfill';
+// import 'whatwg-fetch';
+
+const sgMail = require('@sendgrid/mail')
 
 
 const Guest = () => {
@@ -13,6 +18,7 @@ const Guest = () => {
     statut: '',
     firstname: '',
     lastname: '',
+    email: '',
     tel:'',
     baby:'',
     teenager:''
@@ -39,11 +45,13 @@ const handleChange = (e) =>{
     const response = await fetch('/api/guest', requestOptions)
     const data = await response.json();
     console.log('DATA :', data)
-    setInputs({...inputs, statut: '', firstname: '', lastname: '', tel: '', baby: '', teenager: ''});
+    setInputs({...inputs, statut: '', firstname: '', lastname: '', tel: '', email:'', baby: '', teenager: ''});
+
     if(!response.ok){
         toast.error(data.error)
       }
-    toast.success(data.message)
+    toast.success(data.message);
+
   };
 
   // const notify = () => toast("Invitation confirmée, merci!")
@@ -125,6 +133,16 @@ const handleChange = (e) =>{
         onChange={handleChange}
         variant="outlined"
        />
+     <TextField
+          style ={{marginBottom:'16px', marginTop:'2px'}}
+          label="Email"
+          placeholder="Example@gmail.com"
+          type="text"
+          name="email"
+          value={inputs.email}
+          onChange={handleChange}
+          variant="outlined"
+         />   
       <FormControl
         variant="outlined"
         >

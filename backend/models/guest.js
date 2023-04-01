@@ -24,6 +24,11 @@ const guestSchema = mongoose.Schema(
             required:true,
             unique:true
         },
+        email:{
+            type:String,
+            trim: true,
+            unique:true
+        },
         baby:{
             type:String,
         },
