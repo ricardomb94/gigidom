@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Footer from './components/Footer';
 import DataTable  from "./pages/DataTable";
 import Accueil from './pages/Accueil';
+import Qrcode from './components/Qrcode';
 // import Layout from './components/Layout';
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
                         <Route path="/ceremony" element={<Ceremony/>}/>
                         <Route path="/datatable" element={<DataTable/>}/>
                     </Routes>
+                    <Qrcode/>
                 <Footer/>    
             </Router>
         // </Layout>   
