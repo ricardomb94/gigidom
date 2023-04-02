@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 // import 'babel-polyfill';
 // import 'whatwg-fetch';
 
-const sgMail = require('@sendgrid/mail')
+// const sgMail = require('@sendgrid/mail')
 
 
 const Guest = () => {

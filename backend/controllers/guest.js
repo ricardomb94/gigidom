@@ -1,6 +1,6 @@
 import Guest from '../models/guest.js'
 import asyncHandler from "express-async-handler";
-
+import sgMail from '@sendgrid/mail';
 
 const guest = asyncHandler(async (req, res) => {
   const { statut, firstname, lastname, tel, email, baby, teenager } = req.body;
@@ -21,6 +21,24 @@ const guest = asyncHandler(async (req, res) => {
   res.json({
     message: `Bonjour ${firstname} Merci d'avoir rempli le formulaire`
   });
+
+  //send the new guest by email
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+const msg = {
+  to: 'ogi_@hotmail.fr', // Change to your recipient
+  from: 'progricdev@gmail.com', // Change to your verified sender
+  subject: 'Retour invitation',
+  text: 'Dom et moi',
+  html: ` Bonjour Ogilvie ! <br> A l'occasion de ton mariage moi : <strong> ${firstname} ${lastname} je serai ${statut}(e) , </strong>. <br> Je accompagné(e) de: <strong> ${baby} enfant en bas âge (ou un bébé) et ${teenager} adolescent.</strong> <br> Voici mes coordonnées: <br> - Téléphone : <strong>${tel}</strong> <br> - E-mail : <strong>${email}</strong`,
+}
+sgMail
+  .send(msg)
+  .then(() => {
+    console.log('Email sent')
+  })
+  .catch((error) => {
+    console.error(error)
+  })
 });
 
 export {guest}
