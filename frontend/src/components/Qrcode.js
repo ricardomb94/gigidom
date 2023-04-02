@@ -24,7 +24,7 @@ const Qrcode = () => {
         flexDirection='column'
         alignItems='center'
         marginBottom={5}
-        spacing={2}
+        spacing={5}
       >
       <Typography textAlign='center'> QRCode Generator</Typography>
     <TextField 
@@ -33,15 +33,20 @@ const Qrcode = () => {
         placeholder='www.example.com'
         onChange={(e) => setUrl(e.target.value)}
         />
-        <Grid item>
-            <Button  onClick={GenerateQRCode} variant="contained" color="primary">Generate</Button>
-        </Grid>
-        <Grid item>
-            {qrcode && <>
-                <img src={qrcode} alt='qrcode'/>
-
-            </>}
-        </Grid>
+            <Button  
+                onClick={GenerateQRCode} 
+                variant="contained" 
+                color="primary"
+                sx={{marginTop:'1rem'}}
+                >
+                    Generate
+            </Button>
+            {
+                qrcode && <>
+                    <img src={qrcode} alt='qrcode'/>
+                    <a href={qrcode} download = "qrcode.png">Download</a>
+                </>
+            }
       </Grid>
     </>
   )
