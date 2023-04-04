@@ -30,8 +30,9 @@ app.use(express.urlencoded({ extended: true }));
 
 
 if (process.env.NODE_ENV === 'production') {
-  const __dirname =path.dirname(__filename);
-  const __filename = fileURLToPath(import.meta.url);
+
+  const __dirname = path.dirname(new URL(import.meta.url).pathname);
+  // const __filename = fileURLToPath(import.meta.url);
   // Serve static files from the build directory
     app.use(express.static(path.join(__dirname, '../frontend/build')))
     console.log('DIRECTORY NAME :', __dirname)
