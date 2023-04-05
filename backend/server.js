@@ -34,12 +34,12 @@ if (process.env.NODE_ENV === 'production') {
   const __dirname = path.dirname(new URL(import.meta.url).pathname);
   // const __filename = fileURLToPath(import.meta.url);
   // Serve static files from the build directory
-    app.use(express.static(path.join(__dirname, '../frontend/build')))
+    app.use(express.static(path.resolve('../frontend/build')))
     console.log('DIRECTORY NAME :', __dirname)
   
     // Serve the index.html file for all other requests
     app.get('*', (req, res) =>
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+      res.sendFile(path.resolve('frontend', 'build', 'index.html'))
     )
   } else {
     app.get('/', (req, res) => {
