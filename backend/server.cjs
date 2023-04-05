@@ -5,6 +5,7 @@ import colors from 'colors';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import path from 'path';
+import { fileURLToPath } from 'url';
 // import route
 import guestRoutes from './routes/guest.js';
 
@@ -26,11 +27,19 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '/frontend/build')))
+
+  const __dirname = path.dirname(new URL(import.meta.url).pathname);
+  // const __filename = fileURLToPath(import.meta.url);
+  // Serve static files from the build directory
+    app.use(express.static(path.resolve('../frontend/build')))
+    console.log('DIRECTORY NAME :', __dirname)
   
+    // Serve the index.html file for all other requests
     app.get('*', (req, res) =>
-      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+      res.sendFile(path.resolve('frontend', 'build', 'index.html'))
     )
   } else {
     app.get('/', (req, res) => {

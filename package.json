@@ -5,10 +5,11 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "start": "node backend/server",
+    "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "yarn --cwd ./frontend run start",
-    "dev": "concurrently \"yarn run server\" \"yarn run client\""
+    "dev": "concurrently \"yarn run server\" \"yarn run client\"",
+    "heroku-postbuig":"YARN_CONFIG_PRODUTION=false yarn add --prefix frontend && yarn build --prefix frontend"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",

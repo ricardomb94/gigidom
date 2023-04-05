@@ -49,7 +49,8 @@ const Navbar = ({ links }) => {
                                 color: '#f50057',
                                 textDecoration:"none",
                                 textTransform: "uppercase",
-                                fontFamily:"'Montserrat'"
+                                fontFamily:"'Montserrat'",
+                                fontSize:"0.8em"
                             }}
                           >
                             {navItem.label}

@@ -1,26 +1,26 @@
 import React from 'react'
-import { Box, Container, IconButton, Link, Typography } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
+import { Box, Container, Typography } from '@mui/material'
+// import makeStyles from '@mui/styles/makeStyles'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
-const useStyles = makeStyles((theme)=> ({
-    root:{
-        backgroundColor: theme.palette.primary.main,
-        color:theme.palette.white,
-        padding:theme.spacing(3),
-        marginTop: theme.spacing(6)
-    },
-    link:{
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-    }
-}))
+// const useStyles = makeStyles((theme)=> ({
+//     root:{
+//         backgroundColor: theme.palette.primary.main,
+//         color:theme.palette.white,
+//         padding:theme.spacing(3),
+//         marginTop: theme.spacing(6)
+//     },
+//     link:{
+//         marginLeft: theme.spacing(1),
+//         marginRight: theme.spacing(1),
+//     }
+// }))
 
 
 const Footer = () => {
 
-    const classes = useStyles()
+    // const classes = useStyles()
 
   return (
     <Box 
