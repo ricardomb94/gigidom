@@ -9,7 +9,7 @@
     "server": "nodemon backend/server.js",
     "client": "yarn --cwd ./frontend run start",
     "dev": "concurrently \"yarn run server\" \"yarn run client\"",
-    "heroku-postbuig":"YARN_CONFIG_PRODUTION=false yarn install --prefix frontend && yarn build --prefix frontend"
+    "heroku-postbuild":"YARN_CONFIG_PRODUTION=false yarn install --prefix frontend && yarn build --prefix frontend"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
