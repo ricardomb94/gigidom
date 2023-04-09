@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === 'production') {
 
   const __dirname = path.resolve();
   // Serve static files from the build directory
-  app.use(express.static(path.join(__dirname, '/frontend/build')))
+  app.use(express.static(path.join(__dirname, 'frontend', 'build')))
   console.log('DIRECTORY', __dirname);
   
     // Serve the index.html file for all other requests
