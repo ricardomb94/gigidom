@@ -32,14 +32,12 @@ if (process.env.NODE_ENV === 'production') {
 
   const __dirname = path.resolve();
   // Serve static files from the build directory
-  app.use(express.static('frontend/build'))
-
+  app.use(express.static(path.join(__dirname, '/frontend/build')))
   
     // Serve the index.html file for all other requests
     app.get('*', (req, res) =>
       res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
-      )
-      console.log(__dirname)
+    )
   } else {
     app.get('/', (req, res) => {
       res.send('API is running....')
