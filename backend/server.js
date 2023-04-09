@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === 'production') {
   console.log('DIRECTORY', __dirname);
   
     // Serve the index.html file for all other requests
-    app.get('*', (req, res) =>
+    app.get('/*', (req, res) =>
       res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
     )
   } else {
