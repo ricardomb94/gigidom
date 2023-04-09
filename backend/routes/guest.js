@@ -8,10 +8,6 @@ import {runValidation} from '../validators/index.js'
 
 const router = express.Router();
 
-
-
-router
-    .route("/")
-    .post('/guest', guestValidator, runValidation, guest)
+router.post('/guest', guestValidator, runValidation, guest)
   
 export default router
