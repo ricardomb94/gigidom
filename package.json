@@ -9,7 +9,8 @@
     "server": "nodemon backend/server.js",
     "client": "yarn --cwd ./frontend run start",
     "dev": "concurrently \"yarn run server\" \"yarn run client\"",
-    "heroku-postbuild":"YARN_PRODUCTION=false yarn install --prefix frontend && yarn run build --prefix frontend"
+    "heroku-postbuild":"cd app && cd frontend && npm install --only=dev && npm install && npm run build",
+    "full-install": "npm install && npm install --prefix frontend"  
   },
   "engines": {
     "node": "18.9.1"
