@@ -61,7 +61,7 @@ const CustomCard = () => {
           >
             <img src={decoImg} alt="decoration" />
                 <Typography gutterBottom variant="h3" component="div">
-                    Our Story
+                    Notre histoire
                 </Typography>
                 <Typography variant="body2" color="text.secondary" sx={{fontSize:"1.2em", textAlign:"justify"}}>
                         La vie est un sommeil et l'amour en est le rêve. 

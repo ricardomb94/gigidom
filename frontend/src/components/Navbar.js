@@ -1,67 +1,108 @@
-import { AppBar, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, Divider, Drawer, IconButton, Toolbar, Typography, useTheme } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { React } from 'react';
-// import { Image } from 'mui-image';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { React, useState } from 'react';
 import { Slide } from "react-awesome-reveal";
-// import logo from '../assets/images/bague.png'
-// import styled from '@emotion/styled';
-// import { Favorite } from '@mui/icons-material';
-// import { pink } from '@mui/material/colors';
 import { Link } from 'react-router-dom';
+import styled from '@emotion/styled';
+// import MyDrawer from './MyDrawer';
 
-
-// const StyledTabs = styled(Tabs)(({ theme }) => ({
-//     [theme.breakpoints.down("sm")]: {
-//         display: 'none',
-//         backgroundColor: 'white'
-//     }
-// }))
+const drawerWidth = 240;
 
 const navItems = [{path:"/", label:"Accueil"}, {path:"/guest", label:"Invitation"}, {path:"/ceremony", label:"Cérémonie"}, {path:"/contact", label:"Contact"}, {path:"/datatable", label:"Tableau"}]
 
+const DrawerHeader = styled('div')(({ theme }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-end',
+  }));
+
 const Navbar = ({ links }) => {
+
+    const theme = useTheme();
+    const [open,setOpen] = useState(false);
+
+    const handleDrawerOpen = () => {
+        setOpen(true);
+    }
+
+    const handleDrawerClose = () => {
+        setOpen(false);
+      };
     return (
-        <AppBar style={{ background: '#fff' }}>
-            <Slide cascade>
-                <Toolbar >
-                    <IconButton edge="start" color="inherit" aria-label="menu" >
-                        <MenuIcon sx={{backgroundColor: '#f50057', display:{sm:'none'}}}/>
-                    </IconButton>
-                    <Typography
-                        fontFamily="'Montserrat'"
-                        variant="h6"
-                        component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: '#000000' }}
-                    >
-                    <IconButton edge="start" color="inherit" aria-label="menu" >
-                    Gigi<FavoriteIcon sx={{color: '#f50057'}}/>Dom
-                    </IconButton>
-                    </Typography >
-                    <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                       {navItems.map((navItem) => (
-                       <Button key={navItem.path} >
-                        <Link to={navItem.path}
-                            underline="none"
-                            // fontFamily="'Montserrat'"
-                            style={{ 
-                                marginLeft:20,
-                                color: '#f50057',
-                                textDecoration:"none",
-                                textTransform: "uppercase",
-                                fontFamily:"'Montserrat'",
-                                fontSize:"0.8em"
-                            }}
-                          >
-                            {navItem.label}
-                        </Link>
-                       </Button>
-                     ))
-                    }
-                    </Box>  
-                </Toolbar>
-            </Slide>
-        </AppBar>
+        <Box>
+            <AppBar style={{ background: '#fff' }} open={open}>
+                <Slide cascade>
+                    <Toolbar >
+                        <IconButton 
+                            edge="start" 
+                            color="inherit"
+                            aria-label="open drawer" 
+                            onClick={handleDrawerOpen}
+                            sx={{mr:2}}
+                        >
+                            <MenuIcon sx={{backgroundColor: '#f50057', display:{sm:'none'}}}/>
+                        </IconButton>
+                        <Typography
+                            fontFamily="'Montserrat'"
+                            variant="h6"
+                            component="div"
+                            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: '#000000' }}
+                        >
+                        <IconButton edge="start" color="inherit" aria-label="menu" >
+                        Gigi<FavoriteIcon sx={{color: '#f50057'}}/>Dom
+                        </IconButton>
+                        </Typography >
+                        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                        {navItems.map((navItem) => (
+                        <Button key={navItem.path} >
+                            <Link to={navItem.path}
+                                underline="none"
+                                // fontFamily="'Montserrat'"
+                                style={{ 
+                                    marginLeft:20,
+                                    color: '#f50057',
+                                    textDecoration:"none",
+                                    textTransform: "uppercase",
+                                    fontFamily:"'Montserrat'",
+                                    fontSize:"0.8em"
+                                }}
+                            >
+                                {navItem.label}
+                            </Link>
+                        </Button>
+                        ))
+                        }
+                        </Box>
+                    </Toolbar>
+                </Slide>
+            </AppBar>
+            <Drawer
+                sx={{
+                  width: drawerWidth,
+                  flexShrink: 0,
+                  '& .MuiDrawer-paper': {
+                   width: drawerWidth,
+                   boxSizing: 'border-box',
+                  }, 
+                }}
+                variant="persistent"
+                anchor='left'  
+                open={open} 
+            >
+             <DrawerHeader>
+                <IconButton onClick={handleDrawerClose}>
+                    {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                </IconButton>
+             </DrawerHeader>
+             <Divider />
+            </Drawer>
+        </Box>
     )
 }
 
