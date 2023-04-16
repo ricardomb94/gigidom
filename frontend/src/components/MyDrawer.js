@@ -33,7 +33,6 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      {/* <MenuIcon sx={{backgroundColor: '#f50057', display:{sm:'none'}}}/> */}
       <List>
         {navItems.map((navItem) => (
           <ListItem key={navItem.path} >

@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Divider, Drawer, IconButton, Toolbar, Typography, useTheme } from '@mui/material';
+import { AppBar, Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography, useTheme } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -100,7 +100,32 @@ const Navbar = ({ links }) => {
                     {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                 </IconButton>
              </DrawerHeader>
-             <Divider />
+             <Divider /> 
+             <List>
+        {navItems.map((navItem) => (
+          <ListItem key={navItem.path} >
+            <ListItemButton >
+                <Link to={navItem.path}
+                    underline="none"
+                    // fontFamily="'Montserrat'"
+                    style={{ 
+                      marginLeft:20,
+                      color: '#f50057',
+                      textDecoration:"none",
+                      textTransform: "uppercase",
+                      fontFamily:"'Montserrat'",
+                      fontSize:"0.8em"
+                    }}
+                  >
+                    <ListItemText>
+                      {navItem.label}
+                    </ListItemText>
+                </Link>
+            </ListItemButton>
+            </ListItem>
+          ))
+        }
+      </List>
             </Drawer>
         </Box>
     )
