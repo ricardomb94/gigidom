@@ -1,12 +1,13 @@
 import React from 'react'
 // import ImageCard from './components/ImageCard'
 import Header from './components/Header'
-import Contact from "./pages/Contact";
+// import Contact from "./pages/Contact";
 import Invitation from './pages/Invitation';
-import Ceremony from "./pages/Ceremony";
+// import Ceremony from "./pages/Ceremony";
+import Localisation from "./pages/Localisation";
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Footer from './components/Footer';
-import DataTable  from "./pages/DataTable";
+// import DataTable  from "./pages/DataTable";
 import Accueil from './pages/Accueil';
 // import Qrcode from './components/Qrcode';
 // import Layout from './components/Layout';
@@ -19,9 +20,10 @@ const App = () => {
                     <Routes>
                         <Route exact path="/" element={<Accueil/>}/>
                         <Route path="/guest" element={<Invitation/>}/>
-                        <Route path="/contact" element={<Contact/>}/>
-                        <Route path="/ceremony" element={<Ceremony/>}/>
-                        <Route path="/datatable" element={<DataTable/>}/>
+                        <Route path="/localisation" element={<Localisation/>}/>
+                        {/* <Route path="/contact" element={<Contact/>}/> */}
+                        {/* <Route path="/ceremony" element={<Ceremony/>}/> */}
+                        {/* <Route path="/datatable" element={<DataTable/>}/> */}
                     </Routes>
                     {/* <Qrcode/> */}
                 <Footer/>    

@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 
 const drawerWidth = 240;
 
-const navItems = [{path:"/", label:"Accueil"}, {path:"/guest", label:"Invitation"}, {path:"/ceremony", label:"Cérémonie"}, {path:"/contact", label:"Contact"}, {path:"/datatable", label:"Tableau"}]
+const navItems = [{path:"/", label:"Accueil"}, {path:"/guest", label:"Invitation"}, {path:"/ceremony", label:"Ceremonie"},  {path:"/localisation", label:"Localisation"}, {path:"/contact", label:"Contact"}, {path:"/datatable", label:"Tableau"}]
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -126,8 +126,8 @@ const Navbar = ({ links }) => {
           ))
         }
       </List>
-            </Drawer>
-        </Box>
+        </Drawer>
+    </Box>
     )
 }
 
