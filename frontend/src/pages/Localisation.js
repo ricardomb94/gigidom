@@ -16,8 +16,8 @@ const Localisation = () => {
  
   const {isLoaded} = useJsApiLoader({
     id: 'google-map-script',
-    //googleMapsApiKey:'AIzaSyB_IpizEcfAOF81JfsWQUwthEBr1wLurO8'
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+   googleMapsApiKey:'AIzaSyB_IpizEcfAOF81JfsWQUwthEBr1wLurO8'
+     //googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
   }) 
 
   const [map, setMap] = React.useState(null)
