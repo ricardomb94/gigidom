@@ -1,8 +1,7 @@
 
 import React, {Fragment} from 'react'
-import {GoogleMap, useJsApiLoader} from '@react-google-maps/api'
+import {GoogleMap, Marker, useJsApiLoader} from '@react-google-maps/api'
 // import Carousel from '../components/Carousel'
-
 
 const containerStyle = {
     width:'100vw',
@@ -17,7 +16,8 @@ const Localisation = () => {
  
   const {isLoaded} = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey:'AIzaSyB_IpizEcfAOF81JfsWQUwthEBr1wLurO8'
+    //googleMapsApiKey:'AIzaSyB_IpizEcfAOF81JfsWQUwthEBr1wLurO8'
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
   }) 
 
   const [map, setMap] = React.useState(null)
@@ -37,10 +37,10 @@ const Localisation = () => {
     position: 'relative'
     }}>
       {/* <Carousel/> */}
-    <div style={{position:'absolute',top:10, backgroundColor:'orange', padding:25, zIndex:999 }}>
+    {/* <div style={{position:'absolute',top:10, backgroundColor:'orange', padding:25, zIndex:999 }}>
       <h1>Domaine de la butte</h1>
       <p style={{textAlign: 'center'}}>Au centre de la carte</p>
-    </div>
+    </div> */}
     {isLoaded ?
     <GoogleMap
       mapContainerStyle={containerStyle}
@@ -49,7 +49,7 @@ const Localisation = () => {
       onUnmount={onUmount}
     >
       {/* {Child component, such as markers, info windows, etc} */}
-      <></>
+      <Marker position={center}/>
     </GoogleMap>
     : <></>
     }
