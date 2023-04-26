@@ -45,7 +45,7 @@ const Localisation = () => {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={15}
+      zoom={10}
       onUnmount={onUmount}
     >
       {/* {Child component, such as markers, info windows, etc} */}
