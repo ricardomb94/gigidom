@@ -2,6 +2,7 @@
 import React, {Fragment} from 'react'
 import {GoogleMap, Marker, useJsApiLoader} from '@react-google-maps/api'
 // import Carousel from '../components/Carousel'
+import DistanceMatrix from '../components/DistanceMatrix'
 
 const containerStyle = {
     width:'100vw',
@@ -50,6 +51,7 @@ const Localisation = () => {
     >
       {/* {Child component, such as markers, info windows, etc} */}
       <Marker position={center}/>
+      <DistanceMatrix/>
     </GoogleMap>
     : <></>
     }
