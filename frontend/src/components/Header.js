@@ -40,8 +40,8 @@ const Header = () => {
             <Zoom cascade>
                 <Item
                     sx={{
-                        width: '60%',
-                        height: '50vh',
+                        width: '45%',
+                        height: '40vh',
                         margin: '0 auto',
                         borderRadius: '0.3em',
                         border: 'thick double rgb(255 19 123)',
@@ -49,7 +49,7 @@ const Header = () => {
                         top: '2rem',
                         backgroundColor: '#fff',
                         opacity: '0.7',
-                        padding: '0.5rem',
+                        paddingTop: '4rem',
                         color: '#000',
                         [theme.breakpoints.down('sm')]: {
                             width:"90%"
