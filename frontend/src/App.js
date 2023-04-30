@@ -3,7 +3,7 @@ import React from 'react'
 import Header from './components/Header'
 // import Contact from "./pages/Contact";
 import Invitation from './pages/Invitation';
-// import Ceremony from "./pages/Ceremony";
+import Ceremony from "./pages/Ceremony";
 import Localisation from "./pages/Localisation";
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Footer from './components/Footer';
@@ -22,7 +22,7 @@ const App = () => {
                         <Route path="/guest" element={<Invitation/>}/>
                         <Route path="/localisation" element={<Localisation/>}/>
                         {/* <Route path="/contact" element={<Contact/>}/> */}
-                        {/* <Route path="/ceremony" element={<Ceremony/>}/> */}
+                        <Route path="/ceremony" element={<Ceremony/>}/>
                         {/* <Route path="/datatable" element={<DataTable/>}/> */}
                     </Routes>
                     {/* <Qrcode/> */}

@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography, useTheme } from '@mui/material';
+import { AppBar, Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography, useTheme } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -11,7 +11,14 @@ import styled from '@emotion/styled';
 
 const drawerWidth = 240;
 
-const navItems = [{path:"/", label:"Accueil"}, {path:"/guest", label:"Invitation"}, {path:"/ceremony", label:"Ceremonie"},  {path:"/localisation", label:"Localisation"}, {path:"/contact", label:"Contact"}, {path:"/datatable", label:"Tableau"}]
+const navItems = [
+    {path:"/", label:"Accueil"}, 
+    {path:"/guest", label:"Invitation"}, 
+    {path:"/ceremony", label:"Ceremonie"},  
+    {path:"/localisation", label:"Localisation"}, 
+    {path:"/contact", label:"Contact"}, 
+    {path:"/datatable", label:"Tableau"}
+]
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',

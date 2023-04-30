@@ -78,7 +78,7 @@ const handleChange = (e) =>{
         color="secondary"
         >
           <ToastContainer/>
-          Cher/es invité/es<br/> Veuillez confirmer votre présence avant le 26 juin
+          Cher/es invité/es<br/> Veuillez confirmer votre présence avant le 15 juin
       </Typography>
       </Grid>
      <Paper sx={{
