@@ -11,13 +11,13 @@ import img from '../assets/images/fairepart.jpg'
 
 
 
-export default function Ceremony() {
+export default function FairePart() {
 
 
 
   return (
     <Card sx={{ 
-      maxWidth: "92vw", 
+      maxWidth: "75vw", 
       margin: "0 auto"
       }}>
       

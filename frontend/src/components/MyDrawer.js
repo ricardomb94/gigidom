@@ -11,7 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
 
 
-const navItems = [{path:"/", label:"Accueil"}, {path:"/guest", label:"Invitation"}, {path:"/ceremony", label:"Cérémonie"}, {path:"/contact", label:"Contact"}, {path:"/datatable", label:"Tableau"}]
+const navItems = [{path:"/", label:"Accueil"}, {path:"/guest", label:"Invitation"}, {path:"/faire-part", label:"Faire-part"}, {path:"/contact", label:"Contact"}, {path:"/datatable", label:"Tableau"}]
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({

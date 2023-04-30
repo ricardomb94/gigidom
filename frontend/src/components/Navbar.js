@@ -14,7 +14,7 @@ const drawerWidth = 240;
 const navItems = [
     {path:"/", label:"Accueil"}, 
     {path:"/guest", label:"Invitation"}, 
-    {path:"/ceremony", label:"Ceremonie"},  
+    {path:"/faire-part", label:"Faire-part"},  
     {path:"/localisation", label:"Localisation"}, 
     {path:"/contact", label:"Contact"}, 
     {path:"/datatable", label:"Tableau"}
