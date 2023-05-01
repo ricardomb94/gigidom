@@ -54,12 +54,14 @@ const Localisation = () => {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      addresses={addresses}
       zoom={10}
       onUnmount={onUmount}
     >
       {/* {Child component, such as markers, info windows, etc} */}
-      <Marker position={center}/>
+      <Marker 
+        position={center}
+        addresses={addresses}
+      />
     </GoogleMap>
     : <></>
     }
