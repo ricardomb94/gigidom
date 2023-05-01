@@ -10,7 +10,9 @@ const containerStyle = {
 }
 const center = {
   lat:49.303629, 
-  lng:2.0153046
+  lng:2.0153046,
+  lat:49.178970,
+  lng:2.286780
 } 
 
 const Localisation = () => {

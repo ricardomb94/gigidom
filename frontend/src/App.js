@@ -7,7 +7,7 @@ import FairePart from "./pages/FairePart";
 import Localisation from "./pages/Localisation";
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Footer from './components/Footer';
-// import DataTable  from "./pages/DataTable";
+import DataTable  from "./pages/DataTable";
 import Accueil from './pages/Accueil';
 // import Qrcode from './components/Qrcode';
 // import Layout from './components/Layout';
@@ -23,7 +23,7 @@ const App = () => {
                         <Route path="/localisation" element={<Localisation/>}/>
                         {/* <Route path="/contact" element={<Contact/>}/> */}
                         <Route path="/faire-part" element={<FairePart/>}/>
-                        {/* <Route path="/datatable" element={<DataTable/>}/> */}
+                        <Route path="/datatable" element={<DataTable/>}/>
                     </Routes>
                     {/* <Qrcode/> */}
                 <Footer/>    
