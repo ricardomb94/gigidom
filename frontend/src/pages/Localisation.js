@@ -58,10 +58,12 @@ const Localisation = () => {
       onUnmount={onUmount}
     >
       {/* {Child component, such as markers, info windows, etc} */}
-      <Marker 
-        position={center}
-        addresses={addresses}
-      />
+      {addresses.map((address, index) => (
+            <Marker
+              key={index}
+              position={address.location}
+            />
+          ))}
     </GoogleMap>
     : <></>
     }
