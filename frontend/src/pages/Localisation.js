@@ -2,7 +2,6 @@
 import React, {Fragment} from 'react'
 import {GoogleMap, Marker, useJsApiLoader} from '@react-google-maps/api'
 // import Carousel from '../components/Carousel'
-import DistanceMatrix from '../components/DistanceMatrix'
 
 const containerStyle = {
     width:'100vw',
@@ -12,6 +11,15 @@ const center = {
   lat:49.303629, 
   lng:2.0153046
 } 
+
+const addresses = [
+  {
+    location: { lat: 49.1666997, lng: 2.244238}, // Marie de Mesnil-en-Thelle
+  },
+  {
+    location: { lat: 49.1667, lng: 2.25}, // Los Eglise de Chambly
+  },
+];
 
 const Localisation = () => {
  
@@ -46,12 +54,12 @@ const Localisation = () => {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
+      addresses={addresses}
       zoom={10}
       onUnmount={onUmount}
     >
       {/* {Child component, such as markers, info windows, etc} */}
       <Marker position={center}/>
-      <DistanceMatrix/>
     </GoogleMap>
     : <></>
     }
