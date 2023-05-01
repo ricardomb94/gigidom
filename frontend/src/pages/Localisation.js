@@ -9,16 +9,19 @@ const containerStyle = {
 }
 const center = {
   lat:49.303629, 
-  lng:2.0153046
+  lng:2.014790
 } 
 
 const addresses = [
   {
-    location: { lat: 49.1666997, lng: 2.244238}, // Marie de Mesnil-en-Thelle
+    location: { lat: 49.179090, lng: 2.286970}, // Marie de Mesnil-en-Thelle
   },
   {
-    location: { lat: 49.1667, lng: 2.25}, // Los Eglise de Chambly
+    location: { lat: 49.166680, lng: 2.245720}, // Eglise de Chambly
   },
+  {
+    location: {lat:49.303028, lng:2.014790}//
+  }
 ];
 
 const Localisation = () => {
