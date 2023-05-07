@@ -60,15 +60,16 @@ export default function DataTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {guests.map((row,i) => 
+          {guests.map((guest,i) => 
             <StyledTableRow key={i}>
-              <StyledTableCell align="right">{row.statut}</StyledTableCell>
-              <StyledTableCell align="right">{row.firstname.toUpperCase()}</StyledTableCell>
-              <StyledTableCell align="right">{row.lastname.toUpperCase()}</StyledTableCell>
-              <StyledTableCell align="right">{row.baby}</StyledTableCell>
-              <StyledTableCell align="right">{row.teenager}</StyledTableCell>
+              <StyledTableCell align="right">{guest.statut}</StyledTableCell>
+              <StyledTableCell align="right">{guest.firstname.toUpperCase()}</StyledTableCell>
+              <StyledTableCell align="right">{guest.lastname.toUpperCase()}</StyledTableCell>
+              <StyledTableCell align="right">{guest.baby}</StyledTableCell>
+              <StyledTableCell align="right">{guest.teenager}</StyledTableCell>
             </StyledTableRow>
           )}
+          {console.log(guests)}
         </TableBody>
       </Table>
     </TableContainer>
