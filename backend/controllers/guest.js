@@ -41,7 +41,13 @@ sgMail
   })
 });
 
-export {guest}
+//Display a guest list
+const guestList = asyncHandler(async(req, res)=>{
+  const guests = await Guest.find({})
+    res.json(guests)
+
+})
+export {guest, guestList}
 
 
 
