@@ -1,33 +1,39 @@
 import {React, useState, useEffect} from 'react';
-import { Grid, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material'
-// import { DataGrid } from '@mui/x-data-grid';
-// import { Grid, Typography } from '@mui/material';
-// import axios from 'axios';
+// import { Grid, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material'
+import { styled } from '@mui/material/styles'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { Typography } from '@mui/material';
 
 
 
-// const columns = [
-//   { field: 'id', headerName: 'ID', width: 70 },
-//   { field: 'lastName', headerName: 'Nom', width: 130 },
-//   { field: 'firstName', headerName: 'Prénom', width: 130 },
-//   {
-//     field: 'mobile',
-//     headerName: 'Téléphone',
-//     type: 'number',
-//     width: 100,
-//   },
-//   { field: 'baby', headerName: ' -10ans', width: 130 },
-//   { field: 'teenager', headerName: 'adolescent', width: 130 },
-//   { field: 'présent', headerName: 'confirmé', width: 130 },
-//   { field: 'absent', headerName: 'refusé', width: 130 },
-// ];
 
-// const rows = [
-//     { id: 1, firstName:"Ricardo", lastName:"MBK", mobile: "0646461252", baby:"2", teenager:"1", acceptedInvitation:"yes", refusedInvitation:"" },
-//     { id: 2, firstName:"Sheldon", lastName:"TPG", mobile: "0676481254", baby:"0", teenager:"2", acceptedInvitation:"yes", refusedInvitation:"" },
-//     { id: 3, firstName:"Sheldon", lastName:"TPG", mobile: "0676481254", baby:"0", teenager:"2", acceptedInvitation:"", refusedInvitation:"yes" },
-//     { id: 4, firstName:"Sheldon", lastName:"TPG", mobile: "0676481254", baby:"0", teenager:"2", acceptedInvitation:"", refusedInvitation:"yes" },
-// ];
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
+
+
 
 export default function DataTable() {
 
@@ -40,36 +46,31 @@ export default function DataTable() {
   }, [])
 
   return (
-    <Grid style={{ margin:'3rem auto', height: "100%", width:"75vw", textAlign:"center" }}>
-      <Typography variant="h4">"Gurest list"</Typography>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Statut</TableCell>
-              <TableCell>Nom</TableCell>
-              <TableCell>Prénom</TableCell>
-              <TableCell>Enfant - de 10 ans</TableCell>
-              <TableCell>Enfant + de 10 ans</TableCell>
-
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {guests.map((item, index) => (
-              <TableRow key={item.index}>
-                <TableCell>{item.statut}</TableCell>
-                <TableCell>{item.firstname}</TableCell>
-                <TableCell>{item.lastname}</TableCell>
-                <TableCell>{item.baby}</TableCell>
-                <TableCell>{item.teenager}</TableCell>
-              </TableRow>
-            ))}
-           {
-             console.log(guests)
-           }
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Grid>
+    <TableContainer component={Paper}>
+      <Typography mb={5} component="h1" sx={{textAlign:"center"}}>"Guest list"</Typography>
+      <Table sx={{ width: "85vw", margin:"0 auto", marginBottom:"2rem"}} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            {/* <StyledTableCell>Dessert (100g serving)</StyledTableCell> */}
+            <StyledTableCell align="right">Statut</StyledTableCell>
+            <StyledTableCell align="right">Prénom</StyledTableCell>
+            <StyledTableCell align="right">Nom</StyledTableCell>
+            <StyledTableCell align="right">Enfant - 10 ans</StyledTableCell>
+            <StyledTableCell align="right">Enfant + 10 ans</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {guests.map((row,i) => 
+            <StyledTableRow key={i}>
+              <StyledTableCell align="right">{row.statut}</StyledTableCell>
+              <StyledTableCell align="right">{row.firstname.toUpperCase()}</StyledTableCell>
+              <StyledTableCell align="right">{row.lastname.toUpperCase()}</StyledTableCell>
+              <StyledTableCell align="right">{row.baby}</StyledTableCell>
+              <StyledTableCell align="right">{row.teenager}</StyledTableCell>
+            </StyledTableRow>
+          )}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }

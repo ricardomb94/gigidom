@@ -108,8 +108,8 @@ const handleChange = (e) =>{
       value={inputs.guestStatus}
       onChange={handleChange}
     >
-      <FormControlLabel value="présent" control={<Radio />} label="présent" />
-      <FormControlLabel value="absent" control={<Radio />} label="absent" />
+      <FormControlLabel value="Présent" control={<Radio />} label="Présent" />
+      <FormControlLabel value="Absent" control={<Radio />} label="Absent" />
     </RadioGroup>
   </FormControl>
     </Grid>
