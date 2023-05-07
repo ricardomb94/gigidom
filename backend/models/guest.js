@@ -5,7 +5,7 @@ const guestSchema = mongoose.Schema(
     {
         statut:{
             type:String,
-            enum:["Présent", "Absent"],
+            enum:["présent", "absent"],
             required:true
         },
         firstname:{
