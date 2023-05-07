@@ -48,7 +48,7 @@ export default function DataTable() {
   return (
     <TableContainer component={Paper}>
       <Typography mb={5} component="h1" sx={{textAlign:"center"}}>"Guest list"</Typography>
-      <Table sx={{ width: "85vw", margin:"0 auto", marginBottom:"2rem"}} aria-label="customized table">
+      <Table sx={{height:"100vh", width: "85vw", margin:"0 auto", marginBottom:"2rem"}} aria-label="customized table">
         <TableHead>
           <TableRow>
             {/* <StyledTableCell>Dessert (100g serving)</StyledTableCell> */}
