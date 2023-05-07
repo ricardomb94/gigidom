@@ -75,9 +75,9 @@ export default function DataTable() {
         <TableBody>
           {guests.map((guest,i) => 
             <StyledTableRow key={i}>
-              <StyledTableCell align="right">{guest.statut}</StyledTableCell>
-              <StyledTableCell align="right">{guest.firstname.toUpperCase()}</StyledTableCell>
-              <StyledTableCell align="right">{guest.lastname.toUpperCase()}</StyledTableCell>
+              <StyledTableCell align="right">{console.log("GUEST STATUS", guest.statut)}</StyledTableCell>
+              <StyledTableCell align="right">{console.log("GUEST FIRSTNAME", guest.firstname)}</StyledTableCell>
+              <StyledTableCell align="right">{guest.lastname}</StyledTableCell>
               <StyledTableCell align="right">{guest.baby}</StyledTableCell>
               <StyledTableCell align="right">{guest.teenager}</StyledTableCell>
             </StyledTableRow>
