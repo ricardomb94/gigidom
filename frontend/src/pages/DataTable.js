@@ -40,10 +40,23 @@ export default function DataTable() {
   const [guests, setGuests] = useState([]);
 
   useEffect(() => {
-     fetch('/api/guestList')
-      .then(response => response.json())
-      .then(guests => setGuests(guests))
-  }, [])
+    async function getList(){
+      const response = await fetch('/api/guestList')
+
+      if(!response.ok){
+        const message = `Une erreur est survenue: ${response.statusText}`
+        window.alert(message)
+        return
+      }
+
+      const guests = await response.json()
+      setGuests(guests)
+    }
+
+     getList()
+
+     return
+  }, [guests.length])
 
   return (
     <TableContainer component={Paper}>
