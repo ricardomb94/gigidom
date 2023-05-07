@@ -40,23 +40,13 @@ export default function DataTable() {
   const [guests, setGuests] = useState([]);
 
   useEffect(() => {
-    async function getList(){
-      const response = await fetch('/api/guestList')
-
-      if(!response.ok){
-        const message = `Une erreur est survenue: ${response.statusText}`
-        window.alert(message)
-        return
-      }
-
-      const guests = await response.json()
-      setGuests(guests)
-    }
-
-     getList()
-
-     return
-  }, [guests.length])
+     fetch('/api/guestList')
+      .then(response => response.json())
+      .then(guests => setGuests(guests))
+      .catch((err) => {
+        console.log(err.message);
+       });
+  }, [])
 
   return (
     <TableContainer component={Paper}>
@@ -75,9 +65,9 @@ export default function DataTable() {
         <TableBody>
           {guests.map((guest,i) => 
             <StyledTableRow key={i}>
-              <StyledTableCell align="right">{console.log("GUEST STATUS", guest.statut)}</StyledTableCell>
-              <StyledTableCell align="right">{console.log("GUEST FIRSTNAME", guest.firstname)}</StyledTableCell>
-              <StyledTableCell align="right">{guest.lastname}</StyledTableCell>
+              <StyledTableCell align="right">{guest.statut}</StyledTableCell>
+              <StyledTableCell align="right">{guest.firstname.toUpperCase()}</StyledTableCell>
+              <StyledTableCell align="right">{guest.lastname.toUpperCase()}</StyledTableCell>
               <StyledTableCell align="right">{guest.baby}</StyledTableCell>
               <StyledTableCell align="right">{guest.teenager}</StyledTableCell>
             </StyledTableRow>
