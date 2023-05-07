@@ -72,7 +72,7 @@ export default function DataTable() {
               <StyledTableCell align="right">{guest.teenager}</StyledTableCell>
             </StyledTableRow>
           )}
-          {console.log(guests)}
+          {console.log('GUEST LIST:', guests)}
         </TableBody>
       </Table>
     </TableContainer>
