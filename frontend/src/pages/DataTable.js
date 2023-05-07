@@ -1,5 +1,4 @@
 import {React, useState, useEffect} from 'react';
-// import { Grid, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -37,20 +36,24 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function DataTable() {
 
-  const [guests, setGuests] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-     fetch('/api/guestList')
-      .then(response => response.json())
-      .then(guests => setGuests(guests))
-      .catch((err) => {
-        console.log(err.message);
-       });
+    const fetchGuestList = async () => {
+      const response = await fetch('api/guestList/')
+      const json = await response.json()   
+      console.log('FETCH STATUS', response.ok)
+      if (response.ok) {
+        setData(json)
+      }
+    }
+
+    fetchGuestList()
   }, [])
 
   return (
     <TableContainer component={Paper}>
-      <Typography mb={5} component="h1" sx={{textAlign:"center"}}>"Guest list"</Typography>
+      <Typography mb={5} component="h1" variant="h3" sx={{textAlign:"center"}}>"Guest list"</Typography>
       <Table sx={{height:"100vh", width: "85vw", margin:"0 auto", marginBottom:"2rem"}} aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -63,16 +66,16 @@ export default function DataTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {guests.map((guest,i) => 
+          {data && data.map((item,i) => 
             <StyledTableRow key={i}>
-              <StyledTableCell align="right">{guest.statut}</StyledTableCell>
-              <StyledTableCell align="right">{guest.firstname.toUpperCase()}</StyledTableCell>
-              <StyledTableCell align="right">{guest.lastname.toUpperCase()}</StyledTableCell>
-              <StyledTableCell align="right">{guest.baby}</StyledTableCell>
-              <StyledTableCell align="right">{guest.teenager}</StyledTableCell>
+              <StyledTableCell align="right">{item.statut}</StyledTableCell>
+              <StyledTableCell align="right">{item.firstname.toUpperCase()}</StyledTableCell>
+              <StyledTableCell align="right">{item.lastname.toUpperCase()}</StyledTableCell>
+              <StyledTableCell align="right">{item.baby}</StyledTableCell>
+              <StyledTableCell align="right">{item.teenager}</StyledTableCell>
             </StyledTableRow>
           )}
-          {console.log('GUEST LIST:', guests)}
+          {console.log('GUEST LIST:', data)}
         </TableBody>
       </Table>
     </TableContainer>
