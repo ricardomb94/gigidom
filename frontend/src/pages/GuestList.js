@@ -70,13 +70,13 @@ export default function GuestList() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((item,i) => 
+          {data.map((guest,i) => 
             <StyledTableRow key={i}>
-              <StyledTableCell align="right">{item.statut}</StyledTableCell>
-              <StyledTableCell align="right">{item.firstname}</StyledTableCell>
-              <StyledTableCell align="right">{item.lastname}</StyledTableCell>
-              <StyledTableCell align="right">{item.baby}</StyledTableCell>
-              <StyledTableCell align="right">{item.teenager}</StyledTableCell>
+              <StyledTableCell align="right">{guest.statut}</StyledTableCell>
+              <StyledTableCell align="right">{guest.firstname}</StyledTableCell>
+              <StyledTableCell align="right">{guest.lastname}</StyledTableCell>
+              <StyledTableCell align="right">{guest.baby}</StyledTableCell>
+              <StyledTableCell align="right">{guest.teenager}</StyledTableCell>
             </StyledTableRow>
           )}
           {console.log('GUEST LIST:', data)}

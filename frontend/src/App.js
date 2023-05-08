@@ -7,7 +7,7 @@ import FairePart from "./pages/FairePart";
 import Localisation from "./pages/Localisation";
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Footer from './components/Footer';
-import GuestList  from "./pages/GuestLIst";
+import GuestList  from "./pages/GuestList";
 import Accueil from './pages/Accueil';
 // import Qrcode from './components/Qrcode';
 // import Layout from './components/Layout';
