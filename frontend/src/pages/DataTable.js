@@ -45,10 +45,10 @@ export default function DataTable() {
         headers: { 'Content-Type': 'application/json'},
       }
       const response = await fetch('/api/guestList/', requestOptions)
-      const json = await response.json(data)   
+      const data = await response.json()   
       console.log('FETCH STATUS', response.ok)
       if (response.ok) {
-        setData(json)
+        setData(data)
       }
     }
 
