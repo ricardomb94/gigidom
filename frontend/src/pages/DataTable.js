@@ -36,11 +36,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function DataTable() {
 
-  const [data, setData] = useState(['']);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchGuestList = async () => {
-      const response = await fetch('api/guestList/')
+      const response = await fetch('/api/guestList/')
       const json = await response.json(data)   
       console.log('FETCH STATUS', response.ok)
       if (response.ok) {
