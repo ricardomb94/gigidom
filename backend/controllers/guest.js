@@ -45,9 +45,8 @@ sgMail
 const guestList = asyncHandler(async(req, res)=>{
   
   const guests = await Guest.find({})
-    res.setHeader('Content-Type', 'application/json')
+    res.setHeader({'Content-Type': 'application/json'})
     res.status(200).json(guests)
-    res.send(JSON.stringify(guests))
     console.log('FROM BACKEND****', guests);    
 
 })
