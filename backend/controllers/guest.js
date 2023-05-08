@@ -43,6 +43,7 @@ sgMail
 
 //Display a guest list
 const guestList = asyncHandler(async(req, res)=>{
+  
   const guests = await Guest.find({})
     res.setHeader('Content-Type', 'application/json')
     res.status(200).json(guests)

@@ -40,7 +40,11 @@ export default function DataTable() {
 
   useEffect(() => {
     const fetchGuestList = async () => {
-      const response = await fetch('/api/guestList/')
+      const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json'},
+      }
+      const response = await fetch('/api/guestList/', requestOptions)
       const json = await response.json(data)   
       console.log('FETCH STATUS', response.ok)
       if (response.ok) {
