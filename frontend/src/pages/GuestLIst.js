@@ -34,7 +34,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 
-export default function DataTable() {
+export default function GuestList() {
 
   const [data, setData] = useState([]);
 
@@ -44,7 +44,7 @@ export default function DataTable() {
         method: 'GET',
         headers: { 'Content-Type': 'application/json'},
       }
-      const response = await fetch('/api/guestList/', requestOptions)
+      const response = await fetch('/api/guestList', requestOptions)
       const data = await response.json()   
       console.log('FETCH STATUS', response.ok)
       if (response.ok) {

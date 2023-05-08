@@ -17,7 +17,7 @@ const navItems = [
     {path:"/faire-part", label:"Faire-part"},  
     {path:"/localisation", label:"Localisation"}, 
     {path:"/contact", label:"Contact"}, 
-    {path:"/datatable", label:"Tableau"}
+    {path:"/guestList", label:"Liste"}
 ]
 
 const DrawerHeader = styled('div')(({ theme }) => ({
