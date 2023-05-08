@@ -36,7 +36,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function DataTable() {
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(['']);
 
   useEffect(() => {
     const fetchGuestList = async () => {
@@ -66,11 +66,11 @@ export default function DataTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data && data.map((item,i) => 
+          {data.map((item,i) => 
             <StyledTableRow key={i}>
               <StyledTableCell align="right">{item.statut}</StyledTableCell>
-              <StyledTableCell align="right">{item.firstname.toUpperCase()}</StyledTableCell>
-              <StyledTableCell align="right">{item.lastname.toUpperCase()}</StyledTableCell>
+              <StyledTableCell align="right">{item.firstname}</StyledTableCell>
+              <StyledTableCell align="right">{item.lastname}</StyledTableCell>
               <StyledTableCell align="right">{item.baby}</StyledTableCell>
               <StyledTableCell align="right">{item.teenager}</StyledTableCell>
             </StyledTableRow>
