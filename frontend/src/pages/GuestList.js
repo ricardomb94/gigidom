@@ -45,7 +45,7 @@ export default function GuestList() {
         headers: { 'Content-Type': 'application/json'},
       }
       const response = await fetch('/api/guestList', requestOptions)
-      const data = await response.json()   
+      const data = await response.text()   
       console.log('FETCH STATUS', response.ok)
       if (response.ok) {
         setData(data)
