@@ -51,7 +51,7 @@ export default function GuestList() {
       const data = await response.json()   
       console.log('FETCH STATUS', response.ok)
       if (response.ok) {
-        setData(JSON.stringify(data))
+        setData(data)
       }
       console.log('***GUESTLIST****',data)
     }
