@@ -50,7 +50,6 @@ export default function GuestList() {
       try {
         const response = await fetch('/api/guestList', requestOptions);
         const data = await response.json();
-        console.log('FETCH STATUS', response.ok);
         if (response.ok) {
           setData(data);
         }
