@@ -45,7 +45,7 @@ const handleChange = (e) =>{
     const response = await fetch('/api/guest', requestOptions)
     const data = await response.json();
     console.log('DATA :', data)
-    setInputs({...inputs, statut: '', firstname: '', lastname: '', tel: '', email:'', baby: '', teenager: ''});
+    setInputs({...inputs, "statut": " ", "firstname": " ", "lastname": " ", "tel": " ", "email":" ", "baby": " ", "teenager": " "});
 
     if(!response.ok){
         toast.error(data.error)

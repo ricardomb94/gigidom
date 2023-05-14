@@ -47,16 +47,21 @@ export default function GuestList() {
           'Accept': 'application/json'
         },
       }
-      const response = await fetch('/api/guestList', requestOptions)
-      const data = await response.json()   
-      console.log('FETCH STATUS', response.ok)
-      if (response.ok) {
-        setData(data)
+      try {
+        const response = await fetch('/api/guestList', requestOptions);
+        const data = await response.json();
+        console.log('FETCH STATUS', response.ok);
+        if (response.ok) {
+          setData(data);
+        }
+        // console.log('***GUESTLIST****', data);
+      } catch (error) {
+        console.error('Error:', error);
       }
-      console.log('***GUESTLIST****',data)
+      // console.log('***GUESTLIST****',data)
     }
 
-    fetchGuestList()
+    console.log('***FECTH-LIST*****', fetchGuestList());
   }, [])
 
   return (
